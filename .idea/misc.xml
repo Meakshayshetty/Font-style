@@ -3,13 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/custom_edit_text_rounded.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/activity_splash_screen.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/adapter_decoration.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/adapter_font.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/adapter_star.xml" value="0.357421875" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/fragment_decoration.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/fragment_emoticon.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/fragment_font.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/fragment_star.xml" value="0.21666666666666667" />
       </map>
     </option>
   </component>

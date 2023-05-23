@@ -7,6 +7,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -23,7 +24,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val f: Font = fontItems[position]
-        holder.title.setText(f.getFontName())
+        //holder.title.setText(f.getFontName())
         val strBld: StringBuilder = StringBuilder(f.getPreviewText())
         when (position) {
             0 -> {
@@ -684,585 +685,869 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                 }
             }
         }
+
+
         f.setPreviewText(strBld.toString())
-        holder.description.setText(f.getPreviewText())
-        holder.cardView.setOnClickListener(View.OnClickListener {
-            val clipboard =
-                activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        holder.description.text = f.getPreviewText()
+        holder.cardView.setOnClickListener{
             val desStr = holder.description.text.toString()
-            Toast.makeText(activity,
-                "Copied to clipboard! Your copied text is $desStr",
-                Toast.LENGTH_SHORT).show()
-            val clip = ClipData.newPlainText("simple text", desStr)
-            clipboard?.setPrimaryClip(clip)
-        })
+            val mainText = activity.findViewById<TextView>(R.id.main_text)
+
+            //displaying modified string in textView
+            mainText.text = desStr
+
+            activity.findViewById<Button>(R.id.mainBtn).setOnClickListener {
+                Toast.makeText(activity,
+                    "Copied to clipboard! Your copied text is $desStr",
+                    Toast.LENGTH_SHORT).show()
+                saveToClipboard(desStr)
+            }
+        }
+    }
+
+
+    fun saveToClipboard(desStr:String){
+        val clipboard =
+            activity.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("simple text", desStr)
+        clipboard.setPrimaryClip(clip)
     }
 
 
     private fun getSpecialCharFirst(a: Char): Char {
         var ch = a
-        if (ch == 'A') {
-            ch = 'Ⓐ'
-        } else if (ch == 'B') {
-            ch = 'Ⓑ'
-        } else if (ch == 'C') {
-            ch = 'Ⓒ'
-        } else if (ch == 'D') {
-            ch = 'Ⓓ'
-        } else if (ch == 'E') {
-            ch = 'Ⓔ'
-        } else if (ch == 'F') {
-            ch = 'Ⓕ'
-        } else if (ch == 'G') {
-            ch = 'Ⓖ'
-        } else if (ch == 'H') {
-            ch = 'Ⓗ'
-        } else if (ch == 'I') {
-            ch = 'Ⓘ'
-        } else if (ch == 'J') {
-            ch = 'Ⓙ'
-        } else if (ch == 'K') {
-            ch = 'Ⓚ'
-        } else if (ch == 'L') {
-            ch = 'Ⓛ'
-        } else if (ch == 'M') {
-            ch = 'Ⓜ'
-        } else if (ch == 'N') {
-            ch = 'Ⓝ'
-        } else if (ch == 'O') {
-            ch = 'Ⓞ'
-        } else if (ch == 'P') {
-            ch = 'Ⓟ'
-        } else if (ch == 'Q') {
-            ch = 'Ⓠ'
-        } else if (ch == 'R') {
-            ch = 'Ⓡ'
-        } else if (ch == 'S') {
-            ch = 'Ⓢ'
-        } else if (ch == 'T') {
-            ch = 'Ⓣ'
-        } else if (ch == 'U') {
-            ch = 'Ⓤ'
-        } else if (ch == 'V') {
-            ch = 'Ⓥ'
-        } else if (ch == 'W') {
-            ch = 'Ⓦ'
-        } else if (ch == 'X') {
-            ch = 'Ⓧ'
-        } else if (ch == 'Y') {
-            ch = 'Ⓨ'
-        } else if (ch == 'Z') {
-            ch = 'Ⓩ'
-        } else if (ch == 'a') {
-            ch = 'ⓐ'
-        } else if (ch == 'b') {
-            ch = 'ⓑ'
-        } else if (ch == 'c') {
-            ch = 'ⓒ'
-        } else if (ch == 'd') {
-            ch = 'ⓓ'
-        } else if (ch == 'e') {
-            ch = 'ⓔ'
-        } else if (ch == 'f') {
-            ch = 'ⓕ'
-        } else if (ch == 'g') {
-            ch = 'ⓖ'
-        } else if (ch == 'h') {
-            ch = 'ⓗ'
-        } else if (ch == 'i') {
-            ch = 'ⓘ'
-        } else if (ch == 'j') {
-            ch = 'ⓙ'
-        } else if (ch == 'k') {
-            ch = 'ⓚ'
-        } else if (ch == 'l') {
-            ch = 'ⓛ'
-        } else if (ch == 'm') {
-            ch = 'ⓜ'
-        } else if (ch == 'n') {
-            ch = 'ⓝ'
-        } else if (ch == 'o') {
-            ch = 'ⓞ'
-        } else if (ch == 'p') {
-            ch = 'ⓟ'
-        } else if (ch == 'q') {
-            ch = 'ⓠ'
-        } else if (ch == 'r') {
-            ch = 'ⓡ'
-        } else if (ch == 's') {
-            ch = 'ⓢ'
-        } else if (ch == 't') {
-            ch = 'ⓣ'
-        } else if (ch == 'u') {
-            ch = 'ⓤ'
-        } else if (ch == 'v') {
-            ch = 'ⓥ'
-        } else if (ch == 'w') {
-            ch = 'ⓦ'
-        } else if (ch == 'x') {
-            ch = 'ⓧ'
-        } else if (ch == 'y') {
-            ch = 'ⓨ'
-        } else if (ch == 'z') {
-            ch = 'ⓩ'
-        } else if (ch == '0') {
-            ch = '⓪'
-        } else if (ch == '1') {
-            ch = '①'
-        } else if (ch == '2') {
-            ch = '②'
-        } else if (ch == '3') {
-            ch = '③'
-        } else if (ch == '4') {
-            ch = '④'
-        } else if (ch == '5') {
-            ch = '⑤'
-        } else if (ch == '6') {
-            ch = '⑥'
-        } else if (ch == '7') {
-            ch = '⑦'
-        } else if (ch == '8') {
-            ch = '⑧'
-        } else if (ch == '9') {
-            ch = '⑨'
+        when (ch) {
+            'A' -> {
+                ch = 'Ⓐ'
+            }
+            'B' -> {
+                ch = 'Ⓑ'
+            }
+            'C' -> {
+                ch = 'Ⓒ'
+            }
+            'D' -> {
+                ch = 'Ⓓ'
+            }
+            'E' -> {
+                ch = 'Ⓔ'
+            }
+            'F' -> {
+                ch = 'Ⓕ'
+            }
+            'G' -> {
+                ch = 'Ⓖ'
+            }
+            'H' -> {
+                ch = 'Ⓗ'
+            }
+            'I' -> {
+                ch = 'Ⓘ'
+            }
+            'J' -> {
+                ch = 'Ⓙ'
+            }
+            'K' -> {
+                ch = 'Ⓚ'
+            }
+            'L' -> {
+                ch = 'Ⓛ'
+            }
+            'M' -> {
+                ch = 'Ⓜ'
+            }
+            'N' -> {
+                ch = 'Ⓝ'
+            }
+            'O' -> {
+                ch = 'Ⓞ'
+            }
+            'P' -> {
+                ch = 'Ⓟ'
+            }
+            'Q' -> {
+                ch = 'Ⓠ'
+            }
+            'R' -> {
+                ch = 'Ⓡ'
+            }
+            'S' -> {
+                ch = 'Ⓢ'
+            }
+            'T' -> {
+                ch = 'Ⓣ'
+            }
+            'U' -> {
+                ch = 'Ⓤ'
+            }
+            'V' -> {
+                ch = 'Ⓥ'
+            }
+            'W' -> {
+                ch = 'Ⓦ'
+            }
+            'X' -> {
+                ch = 'Ⓧ'
+            }
+            'Y' -> {
+                ch = 'Ⓨ'
+            }
+            'Z' -> {
+                ch = 'Ⓩ'
+            }
+            'a' -> {
+                ch = 'ⓐ'
+            }
+            'b' -> {
+                ch = 'ⓑ'
+            }
+            'c' -> {
+                ch = 'ⓒ'
+            }
+            'd' -> {
+                ch = 'ⓓ'
+            }
+            'e' -> {
+                ch = 'ⓔ'
+            }
+            'f' -> {
+                ch = 'ⓕ'
+            }
+            'g' -> {
+                ch = 'ⓖ'
+            }
+            'h' -> {
+                ch = 'ⓗ'
+            }
+            'i' -> {
+                ch = 'ⓘ'
+            }
+            'j' -> {
+                ch = 'ⓙ'
+            }
+            'k' -> {
+                ch = 'ⓚ'
+            }
+            'l' -> {
+                ch = 'ⓛ'
+            }
+            'm' -> {
+                ch = 'ⓜ'
+            }
+            'n' -> {
+                ch = 'ⓝ'
+            }
+            'o' -> {
+                ch = 'ⓞ'
+            }
+            'p' -> {
+                ch = 'ⓟ'
+            }
+            'q' -> {
+                ch = 'ⓠ'
+            }
+            'r' -> {
+                ch = 'ⓡ'
+            }
+            's' -> {
+                ch = 'ⓢ'
+            }
+            't' -> {
+                ch = 'ⓣ'
+            }
+            'u' -> {
+                ch = 'ⓤ'
+            }
+            'v' -> {
+                ch = 'ⓥ'
+            }
+            'w' -> {
+                ch = 'ⓦ'
+            }
+            'x' -> {
+                ch = 'ⓧ'
+            }
+            'y' -> {
+                ch = 'ⓨ'
+            }
+            'z' -> {
+                ch = 'ⓩ'
+            }
+            '0' -> {
+                ch = '⓪'
+            }
+            '1' -> {
+                ch = '①'
+            }
+            '2' -> {
+                ch = '②'
+            }
+            '3' -> {
+                ch = '③'
+            }
+            '4' -> {
+                ch = '④'
+            }
+            '5' -> {
+                ch = '⑤'
+            }
+            '6' -> {
+                ch = '⑥'
+            }
+            '7' -> {
+                ch = '⑦'
+            }
+            '8' -> {
+                ch = '⑧'
+            }
+            '9' -> {
+                ch = '⑨'
+            }
         }
         return ch
     }
 
     private fun getSpecialCharSecond(a: Char): Char {
         var ch = a
-        if (ch == 'A') {
-            ch = '₳'
-        } else if (ch == 'B') {
-            ch = '฿'
-        } else if (ch == 'C') {
-            ch = '₵'
-        } else if (ch == 'D') {
-            ch = 'Đ'
-        } else if (ch == 'E') {
-            ch = 'Ɇ'
-        } else if (ch == 'F') {
-            ch = '₣'
-        } else if (ch == 'G') {
-            ch = '₲'
-        } else if (ch == 'H') {
-            ch = 'Ⱨ'
-        } else if (ch == 'I') {
-            ch = 'ł'
-        } else if (ch == 'K') {
-            ch = '₭'
-        } else if (ch == 'L') {
-            ch = 'Ⱡ'
-        } else if (ch == 'M') {
-            ch = '₥'
-        } else if (ch == 'N') {
-            ch = '₦'
-        } else if (ch == 'O') {
-            ch = 'Ø'
-        } else if (ch == 'P') {
-            ch = '₱'
-        } else if (ch == 'R') {
-            ch = 'Ɽ'
-        } else if (ch == 'S') {
-            ch = '₴'
-        } else if (ch == 'T') {
-            ch = '₮'
-        } else if (ch == 'U') {
-            ch = 'Ʉ'
-        } else if (ch == 'W') {
-            ch = '₩'
-        } else if (ch == 'X') {
-            ch = 'Ӿ'
-        } else if (ch == 'Y') {
-            ch = 'Ɏ'
-        } else if (ch == 'Z') {
-            ch = 'Ⱬ'
-        } else if (ch == 'a') {
-            ch = '₳'
-        } else if (ch == 'b') {
-            ch = '฿'
-        } else if (ch == 'c') {
-            ch = '₵'
-        } else if (ch == 'd') {
-            ch = 'Đ'
-        } else if (ch == 'e') {
-            ch = 'Ɇ'
-        } else if (ch == 'f') {
-            ch = '₣'
-        } else if (ch == 'g') {
-            ch = '₲'
-        } else if (ch == 'h') {
-            ch = 'Ⱨ'
-        } else if (ch == 'i') {
-            ch = 'ł'
-        } else if (ch == 'j') {
-            ch = 'J'
-        } else if (ch == 'k') {
-            ch = '₭'
-        } else if (ch == 'l') {
-            ch = 'Ⱡ'
-        } else if (ch == 'm') {
-            ch = '₥'
-        } else if (ch == 'n') {
-            ch = '₦'
-        } else if (ch == 'o') {
-            ch = 'Ø'
-        } else if (ch == 'p') {
-            ch = '₱'
-        } else if (ch == 'q') {
-            ch = 'Q'
-        } else if (ch == 'r') {
-            ch = 'Ɽ'
-        } else if (ch == 's') {
-            ch = '₴'
-        } else if (ch == 't') {
-            ch = '₮'
-        } else if (ch == 'u') {
-            ch = 'Ʉ'
-        } else if (ch == 'v') {
-            ch = 'V'
-        } else if (ch == 'w') {
-            ch = '₩'
-        } else if (ch == 'x') {
-            ch = 'Ӿ'
-        } else if (ch == 'y') {
-            ch = 'Ɏ'
-        } else if (ch == 'z') {
-            ch = 'Ⱬ'
+        when (ch) {
+            'A' -> {
+                ch = '₳'
+            }
+            'B' -> {
+                ch = '฿'
+            }
+            'C' -> {
+                ch = '₵'
+            }
+            'D' -> {
+                ch = 'Đ'
+            }
+            'E' -> {
+                ch = 'Ɇ'
+            }
+            'F' -> {
+                ch = '₣'
+            }
+            'G' -> {
+                ch = '₲'
+            }
+            'H' -> {
+                ch = 'Ⱨ'
+            }
+            'I' -> {
+                ch = 'ł'
+            }
+            'K' -> {
+                ch = '₭'
+            }
+            'L' -> {
+                ch = 'Ⱡ'
+            }
+            'M' -> {
+                ch = '₥'
+            }
+            'N' -> {
+                ch = '₦'
+            }
+            'O' -> {
+                ch = 'Ø'
+            }
+            'P' -> {
+                ch = '₱'
+            }
+            'R' -> {
+                ch = 'Ɽ'
+            }
+            'S' -> {
+                ch = '₴'
+            }
+            'T' -> {
+                ch = '₮'
+            }
+            'U' -> {
+                ch = 'Ʉ'
+            }
+            'W' -> {
+                ch = '₩'
+            }
+            'X' -> {
+                ch = 'Ӿ'
+            }
+            'Y' -> {
+                ch = 'Ɏ'
+            }
+            'Z' -> {
+                ch = 'Ⱬ'
+            }
+            'a' -> {
+                ch = '₳'
+            }
+            'b' -> {
+                ch = '฿'
+            }
+            'c' -> {
+                ch = '₵'
+            }
+            'd' -> {
+                ch = 'Đ'
+            }
+            'e' -> {
+                ch = 'Ɇ'
+            }
+            'f' -> {
+                ch = '₣'
+            }
+            'g' -> {
+                ch = '₲'
+            }
+            'h' -> {
+                ch = 'Ⱨ'
+            }
+            'i' -> {
+                ch = 'ł'
+            }
+            'j' -> {
+                ch = 'J'
+            }
+            'k' -> {
+                ch = '₭'
+            }
+            'l' -> {
+                ch = 'Ⱡ'
+            }
+            'm' -> {
+                ch = '₥'
+            }
+            'n' -> {
+                ch = '₦'
+            }
+            'o' -> {
+                ch = 'Ø'
+            }
+            'p' -> {
+                ch = '₱'
+            }
+            'q' -> {
+                ch = 'Q'
+            }
+            'r' -> {
+                ch = 'Ɽ'
+            }
+            's' -> {
+                ch = '₴'
+            }
+            't' -> {
+                ch = '₮'
+            }
+            'u' -> {
+                ch = 'Ʉ'
+            }
+            'v' -> {
+                ch = 'V'
+            }
+            'w' -> {
+                ch = '₩'
+            }
+            'x' -> {
+                ch = 'Ӿ'
+            }
+            'y' -> {
+                ch = 'Ɏ'
+            }
+            'z' -> {
+                ch = 'Ⱬ'
+            }
         }
         return ch
     }
 
     private fun getSpecialCharThird(a: Char): Char {
         var ch = a
-        if (ch == 'A' || ch == 'a') {
-            ch = 'Ꭺ'
-        } else if (ch == 'B' || ch == 'b') {
-            ch = 'b'
-        } else if (ch == 'C' || ch == 'c') {
-            ch = 'Ꮯ'
-        } else if (ch == 'D' || ch == 'd') {
-            ch = 'Ꭰ'
-        } else if (ch == 'E' || ch == 'e') {
-            ch = 'Ꭼ'
-        } else if (ch == 'F' || ch == 'f') {
-            ch = 'f'
-        } else if (ch == 'G' || ch == 'g') {
-            ch = 'Ꮆ'
-        } else if (ch == 'H' || ch == 'h') {
-            ch = 'h'
-        } else if (ch == 'I' || ch == 'i') {
-            ch = 'Ꭵ'
-        } else if (ch == 'J' || ch == 'j') {
-            ch = 'j'
-        } else if (ch == 'K' || ch == 'k') {
-            ch = 'Ꮶ'
-        } else if (ch == 'L' || ch == 'l') {
-            ch = 'Ꮮ'
-        } else if (ch == 'M' || ch == 'm') {
-            ch = 'm'
-        } else if (ch == 'N' || ch == 'n') {
-            ch = 'Ꮑ'
-        } else if (ch == 'O' || ch == 'o') {
-            ch = 'Ꮎ'
-        } else if (ch == 'P' || ch == 'p') {
-            ch = 'Ꮲ'
-        } else if (ch == 'Q' || ch == 'q') {
-            ch = 'q'
-        } else if (ch == 'R' || ch == 'r') {
-            ch = 'Ꮢ'
-        } else if (ch == 'S' || ch == 's') {
-            ch = 's'
-        } else if (ch == 'T' || ch == 't') {
-            ch = 'Ꮖ'
-        } else if (ch == 'U' || ch == 'u') {
-            ch = 'u'
-        } else if (ch == 'V' || ch == 'v') {
-            ch = 'Ꮙ'
-        } else if (ch == 'W' || ch == 'w') {
-            ch = 'Ꮃ'
-        } else if (ch == 'X' || ch == 'x') {
-            ch = 'x'
-        } else if (ch == 'Y' || ch == 'y') {
-            ch = 'Ꮍ'
-        } else if (ch == 'Z' || ch == 'z') {
-            ch = 'Ꮓ'
+        when (ch) {
+            'A', 'a' -> {
+                ch = 'Ꭺ'
+            }
+            'B', 'b' -> {
+                ch = 'b'
+            }
+            'C', 'c' -> {
+                ch = 'Ꮯ'
+            }
+            'D', 'd' -> {
+                ch = 'Ꭰ'
+            }
+            'E', 'e' -> {
+                ch = 'Ꭼ'
+            }
+            'F', 'f' -> {
+                ch = 'f'
+            }
+            'G', 'g' -> {
+                ch = 'Ꮆ'
+            }
+            'H', 'h' -> {
+                ch = 'h'
+            }
+            'I', 'i' -> {
+                ch = 'Ꭵ'
+            }
+            'J', 'j' -> {
+                ch = 'j'
+            }
+            'K', 'k' -> {
+                ch = 'Ꮶ'
+            }
+            'L', 'l' -> {
+                ch = 'Ꮮ'
+            }
+            'M', 'm' -> {
+                ch = 'm'
+            }
+            'N', 'n' -> {
+                ch = 'Ꮑ'
+            }
+            'O', 'o' -> {
+                ch = 'Ꮎ'
+            }
+            'P', 'p' -> {
+                ch = 'Ꮲ'
+            }
+            'Q', 'q' -> {
+                ch = 'q'
+            }
+            'R', 'r' -> {
+                ch = 'Ꮢ'
+            }
+            'S', 's' -> {
+                ch = 's'
+            }
+            'T', 't' -> {
+                ch = 'Ꮖ'
+            }
+            'U', 'u' -> {
+                ch = 'u'
+            }
+            'V', 'v' -> {
+                ch = 'Ꮙ'
+            }
+            'W', 'w' -> {
+                ch = 'Ꮃ'
+            }
+            'X', 'x' -> {
+                ch = 'x'
+            }
+            'Y', 'y' -> {
+                ch = 'Ꮍ'
+            }
+            'Z', 'z' -> {
+                ch = 'Ꮓ'
+            }
         }
         return ch
     }
 
     private fun getSpecialCharFourth(a: Char): Char {
         var ch = a
-        if (ch == 'A') {
-            ch = 'Ḁ'
-        } else if (ch == 'B') {
-            ch = 'Ḃ'
-        } else if (ch == 'C') {
-            ch = 'Ḉ'
-        } else if (ch == 'D') {
-            ch = 'Ḋ'
-        } else if (ch == 'E') {
-            ch = 'Ḕ'
-        } else if (ch == 'F') {
-            ch = 'Ḟ'
-        } else if (ch == 'G') {
-            ch = 'Ḡ'
-        } else if (ch == 'H') {
-            ch = 'Ḧ'
-        } else if (ch == 'I') {
-            ch = 'Ḭ'
-        } else if (ch == 'K') {
-            ch = 'Ḳ'
-        } else if (ch == 'L') {
-            ch = 'Ḷ'
-        } else if (ch == 'M') {
-            ch = 'Ṁ'
-        } else if (ch == 'N') {
-            ch = 'Ṇ'
-        } else if (ch == 'O') {
-            ch = 'Ṏ'
-        } else if (ch == 'P') {
-            ch = 'Ṗ'
-        } else if (ch == 'R') {
-            ch = 'Ṙ'
-        } else if (ch == 'S') {
-            ch = 'Ṡ'
-        } else if (ch == 'T') {
-            ch = 'Ṯ'
-        } else if (ch == 'U') {
-            ch = 'Ṳ'
-        } else if (ch == 'V') {
-            ch = 'Ṽ'
-        } else if (ch == 'W') {
-            ch = 'Ẇ'
-        } else if (ch == 'X') {
-            ch = 'Ẍ'
-        } else if (ch == 'Y') {
-            ch = 'Ẏ'
-        } else if (ch == 'Z') {
-            ch = 'Ẓ'
-        } else if (ch == 'a') {
-            ch = 'Ḁ'
-        } else if (ch == 'b') {
-            ch = 'ḃ'
-        } else if (ch == 'c') {
-            ch = 'ḉ'
-        } else if (ch == 'd') {
-            ch = 'Ḋ'
-        } else if (ch == 'e') {
-            ch = 'ḕ'
-        } else if (ch == 'f') {
-            ch = 'ḟ'
-        } else if (ch == 'g') {
-            ch = 'Ḡ'
-        } else if (ch == 'h') {
-            ch = 'ḧ'
-        } else if (ch == 'i') {
-            ch = 'ḭ'
-        } else if (ch == 'k') {
-            ch = 'Ḳ'
-        } else if (ch == 'l') {
-            ch = 'Ḷ'
-        } else if (ch == 'm') {
-            ch = 'ṁ'
-        } else if (ch == 'n') {
-            ch = 'Ṇ'
-        } else if (ch == 'o') {
-            ch = 'ṏ'
-        } else if (ch == 'p') {
-            ch = 'Ṗ'
-        } else if (ch == 'r') {
-            ch = 'ṙ'
-        } else if (ch == 's') {
-            ch = 'Ṡ'
-        } else if (ch == 't') {
-            ch = 'Ṯ'
-        } else if (ch == 'u') {
-            ch = 'ṳ'
-        } else if (ch == 'v') {
-            ch = 'Ṽ'
-        } else if (ch == 'w') {
-            ch = 'ẇ'
-        } else if (ch == 'x') {
-            ch = 'Ẍ'
-        } else if (ch == 'y') {
-            ch = 'ẏ'
-        } else if (ch == 'z') {
-            ch = 'Ẓ'
+        when (ch) {
+            'A' -> {
+                ch = 'Ḁ'
+            }
+            'B' -> {
+                ch = 'Ḃ'
+            }
+            'C' -> {
+                ch = 'Ḉ'
+            }
+            'D' -> {
+                ch = 'Ḋ'
+            }
+            'E' -> {
+                ch = 'Ḕ'
+            }
+            'F' -> {
+                ch = 'Ḟ'
+            }
+            'G' -> {
+                ch = 'Ḡ'
+            }
+            'H' -> {
+                ch = 'Ḧ'
+            }
+            'I' -> {
+                ch = 'Ḭ'
+            }
+            'K' -> {
+                ch = 'Ḳ'
+            }
+            'L' -> {
+                ch = 'Ḷ'
+            }
+            'M' -> {
+                ch = 'Ṁ'
+            }
+            'N' -> {
+                ch = 'Ṇ'
+            }
+            'O' -> {
+                ch = 'Ṏ'
+            }
+            'P' -> {
+                ch = 'Ṗ'
+            }
+            'R' -> {
+                ch = 'Ṙ'
+            }
+            'S' -> {
+                ch = 'Ṡ'
+            }
+            'T' -> {
+                ch = 'Ṯ'
+            }
+            'U' -> {
+                ch = 'Ṳ'
+            }
+            'V' -> {
+                ch = 'Ṽ'
+            }
+            'W' -> {
+                ch = 'Ẇ'
+            }
+            'X' -> {
+                ch = 'Ẍ'
+            }
+            'Y' -> {
+                ch = 'Ẏ'
+            }
+            'Z' -> {
+                ch = 'Ẓ'
+            }
+            'a' -> {
+                ch = 'Ḁ'
+            }
+            'b' -> {
+                ch = 'ḃ'
+            }
+            'c' -> {
+                ch = 'ḉ'
+            }
+            'd' -> {
+                ch = 'Ḋ'
+            }
+            'e' -> {
+                ch = 'ḕ'
+            }
+            'f' -> {
+                ch = 'ḟ'
+            }
+            'g' -> {
+                ch = 'Ḡ'
+            }
+            'h' -> {
+                ch = 'ḧ'
+            }
+            'i' -> {
+                ch = 'ḭ'
+            }
+            'k' -> {
+                ch = 'Ḳ'
+            }
+            'l' -> {
+                ch = 'Ḷ'
+            }
+            'm' -> {
+                ch = 'ṁ'
+            }
+            'n' -> {
+                ch = 'Ṇ'
+            }
+            'o' -> {
+                ch = 'ṏ'
+            }
+            'p' -> {
+                ch = 'Ṗ'
+            }
+            'r' -> {
+                ch = 'ṙ'
+            }
+            's' -> {
+                ch = 'Ṡ'
+            }
+            't' -> {
+                ch = 'Ṯ'
+            }
+            'u' -> {
+                ch = 'ṳ'
+            }
+            'v' -> {
+                ch = 'Ṽ'
+            }
+            'w' -> {
+                ch = 'ẇ'
+            }
+            'x' -> {
+                ch = 'Ẍ'
+            }
+            'y' -> {
+                ch = 'ẏ'
+            }
+            'z' -> {
+                ch = 'Ẓ'
+            }
         }
         return ch
     }
 
     private fun getSpecialCharFifth(a: Char): Char {
         var ch = a
-        if (ch == 'A' || ch == 'a') {
-            ch = 'α'
-        } else if (ch == 'B' || ch == 'b') {
-            ch = 'в'
-        } else if (ch == 'C' || ch == 'c') {
-            ch = '¢'
-        } else if (ch == 'D' || ch == 'd') {
-            ch = '∂'
-        } else if (ch == 'E' || ch == 'e') {
-            ch = 'є'
-        } else if (ch == 'F' || ch == 'f') {
-            ch = 'f'
-        } else if (ch == 'G' || ch == 'g') {
-            ch = 'g'
-        } else if (ch == 'H' || ch == 'h') {
-            ch = 'н'
-        } else if (ch == 'I' || ch == 'i') {
-            ch = 'ι'
-        } else if (ch == 'J' || ch == 'j') {
-            ch = 'נ'
-        } else if (ch == 'K' || ch == 'k') {
-            ch = 'к'
-        } else if (ch == 'L' || ch == 'l') {
-            ch = 'ℓ'
-        } else if (ch == 'M' || ch == 'm') {
-            ch = 'м'
-        } else if (ch == 'N' || ch == 'n') {
-            ch = 'и'
-        } else if (ch == 'O' || ch == 'o') {
-            ch = 'σ'
-        } else if (ch == 'P' || ch == 'p') {
-            ch = 'ρ'
-        } else if (ch == 'Q' || ch == 'q') {
-            ch = 'q'
-        } else if (ch == 'R' || ch == 'r') {
-            ch = 'я'
-        } else if (ch == 'S' || ch == 's') {
-            ch = 's'
-        } else if (ch == 'T' || ch == 't') {
-            ch = 'т'
-        } else if (ch == 'U' || ch == 'u') {
-            ch = 'υ'
-        } else if (ch == 'V' || ch == 'v') {
-            ch = 'ν'
-        } else if (ch == 'W' || ch == 'w') {
-            ch = 'ω'
-        } else if (ch == 'X' || ch == 'x') {
-            ch = 'χ'
-        } else if (ch == 'Y' || ch == 'y') {
-            ch = 'у'
-        } else if (ch == 'Z' || ch == 'z') {
-            ch = 'z'
+        when (ch) {
+            'A', 'a' -> {
+                ch = 'α'
+            }
+            'B', 'b' -> {
+                ch = 'в'
+            }
+            'C', 'c' -> {
+                ch = '¢'
+            }
+            'D', 'd' -> {
+                ch = '∂'
+            }
+            'E', 'e' -> {
+                ch = 'є'
+            }
+            'F', 'f' -> {
+                ch = 'f'
+            }
+            'G', 'g' -> {
+                ch = 'g'
+            }
+            'H', 'h' -> {
+                ch = 'н'
+            }
+            'I', 'i' -> {
+                ch = 'ι'
+            }
+            'J', 'j' -> {
+                ch = 'נ'
+            }
+            'K', 'k' -> {
+                ch = 'к'
+            }
+            'L', 'l' -> {
+                ch = 'ℓ'
+            }
+            'M', 'm' -> {
+                ch = 'м'
+            }
+            'N', 'n' -> {
+                ch = 'и'
+            }
+            'O', 'o' -> {
+                ch = 'σ'
+            }
+            'P', 'p' -> {
+                ch = 'ρ'
+            }
+            'Q', 'q' -> {
+                ch = 'q'
+            }
+            'R', 'r' -> {
+                ch = 'я'
+            }
+            'S', 's' -> {
+                ch = 's'
+            }
+            'T', 't' -> {
+                ch = 'т'
+            }
+            'U', 'u' -> {
+                ch = 'υ'
+            }
+            'V', 'v' -> {
+                ch = 'ν'
+            }
+            'W', 'w' -> {
+                ch = 'ω'
+            }
+            'X', 'x' -> {
+                ch = 'χ'
+            }
+            'Y', 'y' -> {
+                ch = 'у'
+            }
+            'Z', 'z' -> {
+                ch = 'z'
+            }
         }
         return ch
     }
 
     private fun getSpecialCharSixth(a: Char): Char {
         var ch = a
-        if (ch == 'A' || ch == 'a') {
-            ch = 'Ã'
-        } else if (ch == 'B' || ch == 'b') {
-            ch = 'β'
-        } else if (ch == 'C' || ch == 'c') {
-            ch = 'Č'
-        } else if (ch == 'D' || ch == 'd') {
-            ch = 'Ď'
-        } else if (ch == 'E' || ch == 'e') {
-            ch = 'Ẹ'
-        } else if (ch == 'F' || ch == 'f') {
-            ch = 'Ƒ'
-        } else if (ch == 'G' || ch == 'g') {
-            ch = 'Ğ'
-        } else if (ch == 'H' || ch == 'h') {
-            ch = 'Ĥ'
-        } else if (ch == 'I' || ch == 'i') {
-            ch = 'Į'
-        } else if (ch == 'J' || ch == 'j') {
-            ch = 'Ĵ'
-        } else if (ch == 'K' || ch == 'k') {
-            ch = 'Ќ'
-        } else if (ch == 'L' || ch == 'l') {
-            ch = 'Ĺ'
-        } else if (ch == 'M' || ch == 'm') {
-            ch = 'ϻ'
-        } else if (ch == 'N' || ch == 'n') {
-            ch = 'Ň'
-        } else if (ch == 'O' || ch == 'o') {
-            ch = 'Ỗ'
-        } else if (ch == 'P' || ch == 'p') {
-            ch = 'Ƥ'
-        } else if (ch == 'Q' || ch == 'q') {
-            ch = 'Ǫ'
-        } else if (ch == 'R' || ch == 'r') {
-            ch = 'Ř'
-        } else if (ch == 'S' || ch == 's') {
-            ch = 'Ŝ'
-        } else if (ch == 'T' || ch == 't') {
-            ch = 'Ť'
-        } else if (ch == 'U' || ch == 'u') {
-            ch = 'Ǘ'
-        } else if (ch == 'V' || ch == 'v') {
-            ch = 'ϋ'
-        } else if (ch == 'W' || ch == 'w') {
-            ch = 'Ŵ'
-        } else if (ch == 'X' || ch == 'x') {
-            ch = 'Ж'
-        } else if (ch == 'Y' || ch == 'y') {
-            ch = 'Ў'
-        } else if (ch == 'Z' || ch == 'z') {
-            ch = 'Ż'
+        when (ch) {
+            'A', 'a' -> {
+                ch = 'Ã'
+            }
+            'B', 'b' -> {
+                ch = 'β'
+            }
+            'C', 'c' -> {
+                ch = 'Č'
+            }
+            'D', 'd' -> {
+                ch = 'Ď'
+            }
+            'E', 'e' -> {
+                ch = 'Ẹ'
+            }
+            'F', 'f' -> {
+                ch = 'Ƒ'
+            }
+            'G', 'g' -> {
+                ch = 'Ğ'
+            }
+            'H', 'h' -> {
+                ch = 'Ĥ'
+            }
+            'I', 'i' -> {
+                ch = 'Į'
+            }
+            'J', 'j' -> {
+                ch = 'Ĵ'
+            }
+            'K', 'k' -> {
+                ch = 'Ќ'
+            }
+            'L', 'l' -> {
+                ch = 'Ĺ'
+            }
+            'M', 'm' -> {
+                ch = 'ϻ'
+            }
+            'N', 'n' -> {
+                ch = 'Ň'
+            }
+            'O', 'o' -> {
+                ch = 'Ỗ'
+            }
+            'P', 'p' -> {
+                ch = 'Ƥ'
+            }
+            'Q', 'q' -> {
+                ch = 'Ǫ'
+            }
+            'R', 'r' -> {
+                ch = 'Ř'
+            }
+            'S', 's' -> {
+                ch = 'Ŝ'
+            }
+            'T', 't' -> {
+                ch = 'Ť'
+            }
+            'U', 'u' -> {
+                ch = 'Ǘ'
+            }
+            'V', 'v' -> {
+                ch = 'ϋ'
+            }
+            'W', 'w' -> {
+                ch = 'Ŵ'
+            }
+            'X', 'x' -> {
+                ch = 'Ж'
+            }
+            'Y', 'y' -> {
+                ch = 'Ў'
+            }
+            'Z', 'z' -> {
+                ch = 'Ż'
+            }
         }
         return ch
     }
 
     private fun getSpecialCharSeventh(a: Char): Char {
         var ch = a
-        if (ch == 'A' || ch == 'a') {
-            ch = 'A'
-        } else if (ch == 'B' || ch == 'b') {
-            ch = 'Ɓ'
-        } else if (ch == 'C' || ch == 'c') {
-            ch = 'Ƈ'
-        } else if (ch == 'D' || ch == 'd') {
-            ch = 'Ɗ'
-        } else if (ch == 'E' || ch == 'e') {
-            ch = 'Є'
-        } else if (ch == 'F' || ch == 'f') {
-            ch = 'Ƒ'
-        } else if (ch == 'G' || ch == 'g') {
-            ch = 'Ɠ'
-        } else if (ch == 'H' || ch == 'h') {
-            ch = 'Ӈ'
-        } else if (ch == 'I' || ch == 'i') {
-            ch = 'Ɩ'
-        } else if (ch == 'J' || ch == 'j') {
-            ch = 'ʆ'
-        } else if (ch == 'K' || ch == 'k') {
-            ch = 'Ƙ'
-        } else if (ch == 'L' || ch == 'l') {
-            ch = 'Լ'
-        } else if (ch == 'M' || ch == 'm') {
-            ch = 'M'
-        } else if (ch == 'N' || ch == 'n') {
-            ch = 'Ɲ'
-        } else if (ch == 'O' || ch == 'o') {
-            ch = 'Ơ'
-        } else if (ch == 'P' || ch == 'p') {
-            ch = 'Ƥ'
-        } else if (ch == 'Q' || ch == 'q') {
-            ch = 'Ƣ'
-        } else if (ch == 'R' || ch == 'r') {
-            ch = 'Ʀ'
-        } else if (ch == 'S' || ch == 's') {
-            ch = 'Ƨ'
-        } else if (ch == 'T' || ch == 't') {
-            ch = 'Ƭ'
-        } else if (ch == 'U' || ch == 'u') {
-            ch = 'Ʋ'
-        } else if (ch == 'V' || ch == 'v') {
-            ch = 'Ɣ'
-        } else if (ch == 'W' || ch == 'w') {
-            ch = 'Ɯ'
-        } else if (ch == 'X' || ch == 'x') {
-            ch = 'Ҳ'
-        } else if (ch == 'Y' || ch == 'y') {
-            ch = 'Ƴ'
-        } else if (ch == 'Z' || ch == 'z') {
-            ch = 'Ȥ'
+        when (ch) {
+            'A', 'a' -> {
+                ch = 'A'
+            }
+            'B', 'b' -> {
+                ch = 'Ɓ'
+            }
+            'C', 'c' -> {
+                ch = 'Ƈ'
+            }
+            'D', 'd' -> {
+                ch = 'Ɗ'
+            }
+            'E', 'e' -> {
+                ch = 'Є'
+            }
+            'F', 'f' -> {
+                ch = 'Ƒ'
+            }
+            'G', 'g' -> {
+                ch = 'Ɠ'
+            }
+            'H', 'h' -> {
+                ch = 'Ӈ'
+            }
+            'I', 'i' -> {
+                ch = 'Ɩ'
+            }
+            'J', 'j' -> {
+                ch = 'ʆ'
+            }
+            'K', 'k' -> {
+                ch = 'Ƙ'
+            }
+            'L', 'l' -> {
+                ch = 'Լ'
+            }
+            'M', 'm' -> {
+                ch = 'M'
+            }
+            'N', 'n' -> {
+                ch = 'Ɲ'
+            }
+            'O', 'o' -> {
+                ch = 'Ơ'
+            }
+            'P', 'p' -> {
+                ch = 'Ƥ'
+            }
+            'Q', 'q' -> {
+                ch = 'Ƣ'
+            }
+            'R', 'r' -> {
+                ch = 'Ʀ'
+            }
+            'S', 's' -> {
+                ch = 'Ƨ'
+            }
+            'T', 't' -> {
+                ch = 'Ƭ'
+            }
+            'U', 'u' -> {
+                ch = 'Ʋ'
+            }
+            'V', 'v' -> {
+                ch = 'Ɣ'
+            }
+            'W', 'w' -> {
+                ch = 'Ɯ'
+            }
+            'X', 'x' -> {
+                ch = 'Ҳ'
+            }
+            'Y', 'y' -> {
+                ch = 'Ƴ'
+            }
+            'Z', 'z' -> {
+                ch = 'Ȥ'
+            }
         }
         return ch
     }
@@ -1274,7 +1559,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
     }
 
     class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.titleTV)
+        //val title: TextView = itemView.findViewById(R.id.titleTV)
         val description: TextView = itemView.findViewById(R.id.descriptionTV)
         val cardView: CardView = itemView.findViewById(R.id.card_view)
     }

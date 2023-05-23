@@ -10,8 +10,8 @@
     <ListView
         android:id="@+id/list_view_EF"
         android:layout_width="match_parent"
+        android:textColor= "@color/black"
         android:layout_height="match_parent">
-
     </ListView>
 
 </LinearLayout>

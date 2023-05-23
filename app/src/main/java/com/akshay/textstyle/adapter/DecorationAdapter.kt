@@ -7,6 +7,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.akshay.textstyle.R
 import com.akshay.textstyle.model.Font
 
-class DecorationAdapter(private var decorationFonts: ArrayList<Font>?, private val activity: Activity?): RecyclerView.Adapter<DecorationAdapter.MyViewHolder>() {
+class DecorationAdapter(private var decorationFonts: ArrayList<Font>?,
+                        private val activity: Activity?)
+    : RecyclerView.Adapter<DecorationAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -25,7 +28,7 @@ class DecorationAdapter(private var decorationFonts: ArrayList<Font>?, private v
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val f: Font = decorationFonts!![position]
-        holder.title.text = f.getFontName()
+        //holder.title.text = f.getFontName()
         val strBld: StringBuilder = StringBuilder(f.getPreviewText())
         when (position) {
             0 -> if ("Preview text" == f.getPreviewText()) {
@@ -722,18 +725,28 @@ class DecorationAdapter(private var decorationFonts: ArrayList<Font>?, private v
                 strBld.insert(strBld.length, "♪┏(°.°)┛")
             }
         }
+
         f.setPreviewText(strBld.toString())
         holder.description.text = f.getPreviewText()
-        holder.cardView.setOnClickListener(View.OnClickListener {
-            val clipboard =
-                activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        holder.cardView.setOnClickListener {
             val desStr = holder.description.text.toString()
-            Toast.makeText(activity,
-                "Copied to clipboard! Your copied text is $desStr",
-                Toast.LENGTH_SHORT).show()
-            val clip = ClipData.newPlainText("simple text", desStr)
-            clipboard.setPrimaryClip(clip)
-        })
+            val mainText = activity!!.findViewById<TextView>(R.id.main_text)
+            mainText.text = desStr
+
+            activity.findViewById<Button>(R.id.mainBtn).setOnClickListener {
+                Toast.makeText(activity,
+                    "Copied to clipboard! Your copied text is $desStr",
+                    Toast.LENGTH_SHORT).show()
+                saveToClipboard(desStr)
+            }
+        }
+    }
+
+    fun saveToClipboard(desStr:String){
+        val clipboard =
+            activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("simple text", desStr)
+        clipboard.setPrimaryClip(clip)
     }
 
 
@@ -742,7 +755,7 @@ class DecorationAdapter(private var decorationFonts: ArrayList<Font>?, private v
     }
 
     class MyViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
-        var title:TextView = itemView.findViewById(R.id.title_text_view_DF)
+        //var title:TextView = itemView.findViewById(R.id.title_text_view_DF)
         var description:TextView=itemView.findViewById(R.id.description_text_view_DF)
         var cardView:CardView = itemView.findViewById(R.id.card_view_DF)
     }

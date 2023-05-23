@@ -1,6 +1,5 @@
 package com.akshay.textstyle.fragments
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -9,12 +8,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.akshay.textstyle.R
+import com.akshay.textstyle.adapter.CustomAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -222,20 +220,28 @@ class EmoticonFragment : Fragment() {
             emoticonFonts.add("( ･_･)♡")
             emoticonFonts.add("★~(◡﹏◕✿)")
         }
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, emoticonFonts)
+        val adapter = CustomAdapter(requireContext(),emoticonFonts)
         listView.adapter = adapter
         listView.onItemClickListener =
             OnItemClickListener { parent, view, position, id ->
-                val clipboard =
-                    requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val desStr = emoticonFonts[position]
-                Toast.makeText(context,
-                    "Copied to clipboard! Your copied text is $desStr",
-                    Toast.LENGTH_SHORT).show()
-                val clip = ClipData.newPlainText("simple text", desStr)
-                clipboard.setPrimaryClip(clip)
+                val mainText = activity?.findViewById<TextView>(R.id.main_text)
+                mainText?.text = desStr
+
+                activity?.findViewById<Button>(R.id.mainBtn)?.setOnClickListener {
+                    Toast.makeText(context,
+                        "Copied to clipboard! Your copied text is $desStr",
+                        Toast.LENGTH_SHORT).show()
+                    saveToClipboard(desStr)
+                }
             }
         return view
+    }
+    fun saveToClipboard(desStr:String){
+        val clipboard =
+            activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("simple text", desStr)
+        clipboard.setPrimaryClip(clip)
     }
 
     override fun onAttach(context: Context) {

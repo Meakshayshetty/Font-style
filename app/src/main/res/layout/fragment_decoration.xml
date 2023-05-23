@@ -7,7 +7,7 @@
     android:gravity="center_vertical"
     tools:context=".fragments.DecorationFragment">
 
-    <EditText
+<!--    <EditText
         android:id="@+id/edit_text_DF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:background="@android:color/white"
         android:autofillHints="Preview text"
         android:textColor="@android:color/black"
-        android:textColorHint="@android:color/black" />
+        android:textColorHint="@android:color/black" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_view_DF"
