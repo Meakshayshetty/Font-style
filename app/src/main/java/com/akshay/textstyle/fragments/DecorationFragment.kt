@@ -468,17 +468,35 @@ class DecorationFragment : Fragment() {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                     var editTextStr =text.toString()
-                    if (editTextStr.isEmpty()) {
-                        editTextStr = "hey!"
-                    }
-                    for (item in decorationFonts.indices) {
-                        decorationFonts[item].setPreviewText(editTextStr)
-                        adapter.notifyDataSetChanged()
-                    }
+                    updateDecorationFonts(s.toString())
+                    adapter.notifyDataSetChanged()
+
+                    /* if (editTextStr.isEmpty()) {
+                         editTextStr = "hey!"
+                     }
+                     for (item in decorationFonts.indices) {
+                         decorationFonts[item].setPreviewText(editTextStr)
+                         adapter.notifyDataSetChanged()
+                     }*/
                 }
             })
+
+            updateDecorationFonts(editText?.text.toString())
+            adapter.notifyDataSetChanged()
+
+
         }
         return view
+    }
+
+    private fun updateDecorationFonts(text:String) {
+        var editTextStr = text
+        if (editTextStr.isEmpty()) {
+            editTextStr= "hey!"
+        }
+        for (item in decorationFonts.indices) {
+            decorationFonts[item].setPreviewText(editTextStr)
+        }
     }
 
     override fun onAttach(context: Context) {

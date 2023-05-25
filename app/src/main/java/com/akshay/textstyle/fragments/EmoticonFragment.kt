@@ -1,15 +1,15 @@
 package com.akshay.textstyle.fragments
 
 import android.app.Activity
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
+import android.widget.EditText
+import android.widget.ListView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.akshay.textstyle.R
 import com.akshay.textstyle.adapter.CustomAdapter
@@ -22,6 +22,7 @@ class EmoticonFragment : Fragment() {
 
     private var context: Activity? = null
     private val emoticonFonts = ArrayList<String>()
+    private var editText:EditText? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -221,7 +222,11 @@ class EmoticonFragment : Fragment() {
             OnItemClickListener { parent, view, position, id ->
                 val desStr = emoticonFonts[position]
                 val mainText = activity?.findViewById<TextView>(R.id.main_text)
-                mainText?.text = desStr
+                editText = activity?.findViewById(R.id.edit_text_main)
+                mainText?.append(desStr)
+                editText?.append(desStr)
+
+
 
                 /*activity?.findViewById<ImageButton>(R.id.mainBtn)?.setOnClickListener {
                     Toast.makeText(context,
