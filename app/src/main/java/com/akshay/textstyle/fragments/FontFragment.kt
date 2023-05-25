@@ -167,7 +167,7 @@ class FontFragment : Fragment() {
             repeat(32) {
                 fontsItems.add(Font())
             }
-        } else {
+        }else {
             fontsItems.clear()
             repeat(32) {
                 fontsItems.add(Font())
@@ -180,15 +180,15 @@ class FontFragment : Fragment() {
             this?.layoutManager = LinearLayoutManager(context)
             this?.setAdapter(adapter)
         }
-        editText = activity?.findViewById(R.id.edit_text_FF)
+        editText = activity?.findViewById(R.id.edit_text_main)
         with(editText){
             this?.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {}
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    var editTextStr = getText().toString()
+                    var editTextStr = text.toString()
                     if (editTextStr.isEmpty() || editTextStr == " ") {
-                        editTextStr = "Preview text"
+                        editTextStr = "hey!"
                     }
                     for (item in fontsItems.indices) {
                         fontsItems[item].setPreviewText(editTextStr)

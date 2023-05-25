@@ -31,10 +31,6 @@ class DecorationFragment : Fragment() {
     private val decorationFonts: ArrayList<Font> = ArrayList()
     private var editText: EditText? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     @SuppressLint("UseRequireInsteadOfGet")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -455,7 +451,6 @@ class DecorationFragment : Fragment() {
                 decorationFonts.add(Font())
             }
         }
-
         fontsRV = view.findViewById(R.id.recycle_view_DF)
 
         val adapter = DecorationAdapter(decorationFonts, context)
@@ -466,15 +461,15 @@ class DecorationFragment : Fragment() {
       /*  fontsRV.layoutManager = LinearLayoutManager(context)
         fontsRV.adapter = adapter*/
 
-        editText = activity?.findViewById(R.id.edit_text_FF)
+        editText = activity?.findViewById(R.id.edit_text_main)
         with(editText){
             this?.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {}
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    var editTextStr = getText().toString()
+                    var editTextStr =text.toString()
                     if (editTextStr.isEmpty()) {
-                        editTextStr = "Preview text"
+                        editTextStr = "hey!"
                     }
                     for (item in decorationFonts.indices) {
                         decorationFonts[item].setPreviewText(editTextStr)

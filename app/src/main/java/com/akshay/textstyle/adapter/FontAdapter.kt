@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -696,22 +697,21 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
             //displaying modified string in textView
             mainText.text = desStr
 
-            activity.findViewById<Button>(R.id.mainBtn).setOnClickListener {
+           /* activity.findViewById<ImageButton>(R.id.mainBtn).setOnClickListener {
                 Toast.makeText(activity,
                     "Copied to clipboard! Your copied text is $desStr",
                     Toast.LENGTH_SHORT).show()
-                saveToClipboard(desStr)
-            }
+                saveToClipboard(desStr)*/
         }
     }
 
 
-    fun saveToClipboard(desStr:String){
+ /*   fun saveToClipboard(desStr:String){
         val clipboard =
             activity.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("simple text", desStr)
         clipboard.setPrimaryClip(clip)
-    }
+    }*/
 
 
     private fun getSpecialCharFirst(a: Char): Char {

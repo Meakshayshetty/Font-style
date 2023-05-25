@@ -12,29 +12,45 @@
         android:layout_width="match_parent"
         android:layout_height="250dp">
 
-        <EditText
-            android:id="@+id/edit_text_FF"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_gravity="center"
-            android:gravity="center"
             android:layout_margin="10dp"
-            android:autofillHints="text"
-            android:background="@drawable/custom_edit_text_rounded"
-            android:hint="@string/edit_text_value"
-            android:imeOptions="actionSearch"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@android:color/black"
-            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/main_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0">
+
+            <EditText
+                android:id="@+id/edit_text_main"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:autofillHints="text"
+                android:background="@drawable/custom_edit_text_rounded"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/black"
+                android:textSize="18sp"/>
+
+            <ImageButton
+                android:id="@+id/imageButton_clear"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@color/white"
+                android:src="@drawable/clear_icon"
+                android:layout_margin="15dp"
+                android:layout_gravity="center|end"/>
+
+        </FrameLayout>
+
+
 
         <TextView
             android:id="@+id/main_text"

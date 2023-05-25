@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akshay.textstyle.R
@@ -15,6 +16,7 @@ import com.akshay.textstyle.model.Font
 
 class StarFragment : Fragment() {
 
+
     private val startIcons: ArrayList<String> = arrayListOf(
         "★", "☆", "✡", "✦", "✧", "✩", "✪", "✫", "✬", "✭",
         "✮", "✯", "✰", "⁂", "⁎", "⁑", "✢", "✣", "✤", "✥",
@@ -22,8 +24,15 @@ class StarFragment : Fragment() {
         "✻", "✼", "✽", "✾", "✿", "❀", "❁", "❂", "❃", "❇",
         "❈", "❉", "❊", "❋", "❄", "❆", "❅", "⋆", "≛", "ᕯ",
         "✲", "࿏", "꙰", "۞", "⭒", "⍟", "⭐", "🌠", "🌟", "💫",
-        "✨", "🌃", "🔯")
+        "✨", "🌃", "🔯","☮", "☸", "♈", "♉", "☪", "♊", "♋",
+        "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓",
+        "☤", "☥", "☧", "☨", "☩", "☫", "☬", "☭", "☯", "☽", "☾",
+        "✙", "✚", "✛", "✜", "✝", "✞", "✟", "†", "⊹", "‡", "♁",
+        "♆", "❖", "♅", "✠", "✡", "✢", "卍", "卐", "〷", "☠", "☢", "☣", "☦")
 
+    private val context: Activity? = null
+    private var mainText: TextView?= null
+    private var edittext_main :EditText? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,10 +56,12 @@ class StarFragment : Fragment() {
         val layoutManager = GridLayoutManager(context, 4)
         recyclerView.layoutManager = layoutManager
 
-        val adapter = StarAdapter(startIcons, context as Activity?) { selectedIcon ->
+        val adapter = StarAdapter(startIcons, context) { selectedIcon ->
             // Handle the selected icon
-            val editText: EditText = requireActivity().findViewById(R.id.main_text)
-            editText.append(selectedIcon)
+            mainText = activity?.findViewById(R.id.main_text)
+            edittext_main = activity?.findViewById(R.id.edit_text_main)
+            mainText?.append(selectedIcon)
+            edittext_main?.append(selectedIcon)
         }
         recyclerView.adapter = adapter
 

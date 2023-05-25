@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -36,7 +37,7 @@ class DecorationAdapter(private var decorationFonts: ArrayList<Font>?,
                 strBld.insert(strBld.length, "★·.·´¯`·.·★")
             } else if (!f.getPreviewText().contains("★·.·´¯`·.·★")) {
                 strBld.insert(0, "★·.·´¯`·.·★")
-                strBld.insert(strBld.length, "★·.·´¯`·.·★")
+                strBld.insert(strBld.length,"★·.·´¯`·.·★")
             }
             1 -> if ("Preview text" == f.getPreviewText()) {
                 strBld.insert(0, "✦͙͙͙*͙*❥⃝∗⁎.ʚ")
@@ -733,22 +734,21 @@ class DecorationAdapter(private var decorationFonts: ArrayList<Font>?,
             val mainText = activity!!.findViewById<TextView>(R.id.main_text)
             mainText.text = desStr
 
-            activity.findViewById<Button>(R.id.mainBtn).setOnClickListener {
+           /* activity.findViewById<ImageButton>(R.id.mainBtn).setOnClickListener {
                 Toast.makeText(activity,
                     "Copied to clipboard! Your copied text is $desStr",
                     Toast.LENGTH_SHORT).show()
                 saveToClipboard(desStr)
-            }
+            }*/
         }
     }
 
-    fun saveToClipboard(desStr:String){
+ /*   fun saveToClipboard(desStr:String){
         val clipboard =
             activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("simple text", desStr)
         clipboard.setPrimaryClip(clip)
-    }
-
+    }*/
 
     override fun getItemCount(): Int {
         return decorationFonts!!.size
