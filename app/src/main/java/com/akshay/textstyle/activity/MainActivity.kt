@@ -21,15 +21,15 @@ import com.google.android.material.tabs.TabLayout
 class MainActivity : AppCompatActivity() {
 
     private val tabIcons = intArrayOf(
-        R.drawable.font,
-        R.drawable.abc,
-        R.drawable.star,
-        R.drawable.maths,
-        R.drawable.numbers,
-        R.drawable.arrow,
-        R.drawable.random_icons,
-        R.drawable.wedding_arch,  //TODO: Change icon
-        R.drawable.smile
+        R.drawable.font_icon,
+        R.drawable.decoration_icon,
+        R.drawable.emote_icon,
+        R.drawable.alphabet_icon,
+        R.drawable.star_icon,
+        R.drawable.maths_icons,
+        R.drawable.number_icon,
+        R.drawable.arrow_icon,
+        R.drawable.random_icon,//TODO: Change icon
     )
     private var tabLayout: TabLayout? = null
     private var clear_btn:ImageButton? =null
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             with(main_text){
                 copy_text = this?.text.toString()
                 saveToClipboard(copy_text!!)
-                Toast.makeText(this@MainActivity,"$copy_text saved",Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@MainActivity,"$copy_text saved",Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -113,14 +113,14 @@ class MainActivity : AppCompatActivity() {
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFrag(FontFragment())
+        adapter.addFrag(DecorationFragment())
+        adapter.addFrag(EmoticonFragment())
         adapter.addFrag(AlphabetFragment())
         adapter.addFrag(StarFragment())
         adapter.addFrag(MathSymbolFragment())
         adapter.addFrag(NumeralFragment())
         adapter.addFrag(ArrowFragment())
         adapter.addFrag(RandomIconFragment())
-        adapter.addFrag(DecorationFragment())
-        adapter.addFrag(EmoticonFragment())
         viewPager.adapter = adapter
     }
 
