@@ -16,6 +16,9 @@ import androidx.viewpager.widget.ViewPager
 import com.akshay.textstyle.R
 import com.akshay.textstyle.adapter.AlphabetAdapter
 import com.akshay.textstyle.fragments.*
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
@@ -38,11 +41,21 @@ class MainActivity : AppCompatActivity() {
     private var done_btn :ImageButton? =null
     private var copy_text:String?= null
 
+    lateinit var adView :AdView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        tab()
 
+        adView = findViewById(R.id.addView)
+
+        MobileAds.initialize(this)
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
+
+        tab()
         clear_btn = findViewById(R.id.imageButton_clear)
         main_text=findViewById(R.id.main_text)
         edit_text=findViewById(R.id.edit_text_main)
