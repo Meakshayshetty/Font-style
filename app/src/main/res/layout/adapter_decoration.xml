@@ -30,12 +30,12 @@
                 android:textSize="12sp" />-->
 
             <TextView
-                android:padding ="10dp"
+                android:padding ="15dp"
                 android:id="@+id/description_text_view_DF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.setPadding
 import com.akshay.textstyle.R
 
 class CustomAdapter(context: Context, items: List<String>):
@@ -14,6 +15,7 @@ class CustomAdapter(context: Context, items: List<String>):
         val view = super.getView(position, convertView, parent)
         val textView = view.findViewById<TextView>(android.R.id.text1)
         textView.setTextColor(ContextCompat.getColor(context, R.color.black))
+        textView.textSize = 16.0F
         return view
     }
 }
