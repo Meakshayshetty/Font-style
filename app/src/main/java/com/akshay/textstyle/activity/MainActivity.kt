@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.akshay.textstyle.activity
 
 import android.content.ClipData
@@ -14,7 +16,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.akshay.textstyle.R
-import com.akshay.textstyle.adapter.AlphabetAdapter
 import com.akshay.textstyle.fragments.*
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
@@ -32,16 +33,16 @@ class MainActivity : AppCompatActivity() {
         R.drawable.maths_icons,
         R.drawable.number_icon,
         R.drawable.arrow_icon,
-        R.drawable.random_icon,//TODO: Change icon
-    )
-    private var tabLayout: TabLayout? = null
-    private var clear_btn:ImageButton? =null
-    private var main_text:TextView? =null
-    private var edit_text:EditText? =null
-    private var done_btn :ImageButton? =null
-    private var copy_text:String?= null
+        R.drawable.random_icon,)
 
-    lateinit var adView :AdView
+    private var tabLayout: TabLayout? = null
+    private var clearBtn:ImageButton? =null
+    private var mainText:TextView? =null
+    private var editText:EditText? =null
+    private var doneBtn :ImageButton? =null
+    private var copyText:String?= null
+
+    private lateinit var adView :AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,23 +57,23 @@ class MainActivity : AppCompatActivity() {
 
 
         tab()
-        clear_btn = findViewById(R.id.imageButton_clear)
-        main_text=findViewById(R.id.main_text)
-        edit_text=findViewById(R.id.edit_text_main)
-        done_btn= findViewById(R.id.mainBtn)
+        clearBtn = findViewById(R.id.imageButton_clear)
+        mainText=findViewById(R.id.main_text)
+        editText=findViewById(R.id.edit_text_main)
+        doneBtn= findViewById(R.id.mainBtn)
 
 
-        with(clear_btn){
+        with(clearBtn){
             this?.setOnClickListener {
-                edit_text?.setText("")
-                main_text?.text = ""
+                editText?.setText("")
+                mainText?.text = ""
             }
         }
 
-        done_btn?.setOnClickListener {
-            with(main_text){
-                copy_text = this?.text.toString()
-                saveToClipboard(copy_text!!)
+        doneBtn?.setOnClickListener {
+            with(mainText){
+                copyText = this?.text.toString()
+                saveToClipboard(copyText!!)
                 //Toast.makeText(this@MainActivity,"$copy_text saved",Toast.LENGTH_SHORT).show()
             }
         }
