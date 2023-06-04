@@ -27,7 +27,7 @@ class SplashScreen : AppCompatActivity() {
         splashImage.startAnimation(slideAnimation)
 
         Handler().postDelayed({
-            val i = Intent(this@SplashScreen, MainActivity::class.java)
+            val i = Intent(this@SplashScreen, MainScreen::class.java)
             startActivity(i)
             // Close this activity
             finish()

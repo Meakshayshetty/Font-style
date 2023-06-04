@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adView = findViewById(R.id.addView)
+        adView = findViewById(R.id.adView)
 
         MobileAds.initialize(this)
 
