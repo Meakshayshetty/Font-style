@@ -4,8 +4,11 @@ package com.akshay.textstyle.activity
 
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.content.ContentValues
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
@@ -17,9 +20,9 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.akshay.textstyle.R
 import com.akshay.textstyle.fragments.*
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
@@ -41,8 +44,10 @@ class MainActivity : AppCompatActivity() {
     private var editText:EditText? =null
     private var doneBtn :ImageButton? =null
     private var copyText:String?= null
-
     private lateinit var adView :AdView
+
+    private var mInterstitialAd: InterstitialAd? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +60,56 @@ class MainActivity : AppCompatActivity() {
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
 
+
+        InterstitialAd.load(this@MainActivity,getString(R.string.mainScreen_interstitial_ad_unitId),adRequest, object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    adError.toString().let { Log.d(ContentValues.TAG, it) }
+                    Log.d("not load", "error loading.")
+
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d("load", "ad loaded.")
+                    mInterstitialAd = interstitialAd
+
+                    mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+                        override fun onAdClicked() {
+                            // Called when a click is recorded for an ad.
+                            Log.d(ContentValues.TAG, "Ad was clicked.")
+                        }
+
+                        override fun onAdDismissedFullScreenContent() {
+                            // Called when ad is dismissed.
+                            Log.d(ContentValues.TAG, "Ad dismissed fullscreen content.")
+                            mInterstitialAd = null
+                        }
+
+                        override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                            // Called when ad fails to show.
+                            Log.e(ContentValues.TAG, "Ad failed to show fullscreen content.")
+                            mInterstitialAd = null
+                        }
+
+                        override fun onAdImpression() {
+                            // Called when an impression is recorded for an ad.
+                            Log.d(ContentValues.TAG, "Ad recorded an impression.")
+                        }
+
+                        override fun onAdShowedFullScreenContent() {
+                            // Called when ad is shown.
+                            Log.d(ContentValues.TAG, "Ad showed fullscreen content.")
+                        }
+                    }
+                }
+            })
+
+        showInterstitialAdDelayed()
+   /*     Handler().postDelayed({
+            if(mInterstitialAd !=null){
+                mInterstitialAd?.show(this)
+            }else Log.e("error","ad null")
+        },5000)*/
 
         tab()
         clearBtn = findViewById(R.id.imageButton_clear)
@@ -77,6 +132,30 @@ class MainActivity : AppCompatActivity() {
                 //Toast.makeText(this@MainActivity,"$copy_text saved",Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun showInterstitialAdDelayed() {
+        val delayMillis = 1000L // Delay between each check in milliseconds
+        val maxAttempts = 10 // Maximum number of attempts
+
+        var currentAttempt = 0
+
+        val runnable = object : Runnable {
+            override fun run() {
+                if (mInterstitialAd != null) {
+                    mInterstitialAd?.show(this@MainActivity)
+                } else {
+                    currentAttempt++
+                    if (currentAttempt <= maxAttempts) {
+                        Handler().postDelayed(this, delayMillis)
+                    } else {
+                        Log.e("error", "ad null")
+                    }
+                }
+            }
+        }
+
+        Handler().postDelayed(runnable, delayMillis)
     }
 
     private fun saveToClipboard(desStr:String){

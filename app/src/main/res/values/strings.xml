@@ -7,7 +7,15 @@
 
 
     <string name="app_id">ca-app-pub-7765986984540298~8822954060</string>
+
     <string name="banner_add_unit_id">ca-app-pub-7765986984540298/3643629635</string>
+    <string name="repeater_screen_banner_add_unit_id">ca-app-pub-7765986984540298/5431487473</string>
+    <string name="mainScreen_interstitial_ad_unitId">ca-app-pub-7765986984540298/4300709957</string>
+    <string name="encrypt_screen_banner_uniid">ca-app-pub-7765986984540298/4717951858</string>
+    <string name="encrypt_screen_interstitial_uniid">ca-app-pub-7765986984540298/1912675171</string>
+    <string name="text_repeater_interstitial_uniid">ca-app-pub-7765986984540298/4300709957</string>
+
+    <string name="main_screen_banner">ca-app-pub-7765986984540298/1130910696</string>
 
 
 </resources>

@@ -8,28 +8,28 @@
     android:background="@color/app_base_color"
     tools:context=".activity.MainActivity">
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView_encrypt"
+        app:adSize="BANNER"
+        app:adUnitId="@string/encrypt_screen_banner_uniid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView"
-            app:adSize="BANNER"
-            app:adUnitId=""
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
 
     <FrameLayout
         android:id="@+id/fl_edi_ttxt"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_text_sizeColor"
+        app:layout_constraintBottom_toTopOf="@+id/main_text_encrypt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adView"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/adView_encrypt"
+        app:layout_constraintVertical_bias="0.19">
 
         <EditText
             android:id="@+id/edit_text_sizeColor_main"
@@ -43,6 +43,7 @@
             android:hint="text"
             android:imeOptions="actionSearch"
             android:inputType="text"
+            android:maxLength="40"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/brown"
@@ -121,9 +122,11 @@
 
 
     <TextView
-        android:id="@+id/main_text_sizeColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/main_text_encrypt"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/custom_button_white"
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@color/white"
@@ -133,6 +136,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinner"
         app:layout_constraintVertical_bias="0.07999998" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_copy"

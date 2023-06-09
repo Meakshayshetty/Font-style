@@ -2,11 +2,17 @@ package com.akshay.textstyle.activity
 
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.content.ContentValues
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.akshay.textstyle.R
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 class TextRepeater : AppCompatActivity() {
 
@@ -21,6 +27,10 @@ class TextRepeater : AppCompatActivity() {
     private lateinit var mainClearBtn:ImageButton
     private lateinit var repeaterClrBtn:ImageButton
     private lateinit var copyBtn:Button
+
+    private lateinit var adView:AdView
+    private var mInterstitialAd:InterstitialAd?=null
+
 
 
 
@@ -41,22 +51,80 @@ class TextRepeater : AppCompatActivity() {
         repeaterClrBtn =findViewById(R.id.repeat_clear)
         copyBtn =findViewById(R.id.repeater_copy)
 
+        adView = findViewById(R.id.repeater_adView)
 
-        checkbox1.setOnCheckedChangeListener { buttonView, isChecked ->
+        MobileAds.initialize(this)
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
+        InterstitialAd.load(this,getString(R.string.text_repeater_interstitial_uniid),adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                adError.toString().let { Log.d(ContentValues.TAG, it) }
+                Log.d("not load", "error loading.")
+
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                Log.d("load", "ad loaded.")
+                mInterstitialAd = interstitialAd
+
+                mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+                    override fun onAdClicked() {
+                        // Called when a click is recorded for an ad.
+                        Log.d(ContentValues.TAG, "Ad was clicked.")
+                    }
+
+                    override fun onAdDismissedFullScreenContent() {
+                        // Called when ad is dismissed.
+                        Log.d(ContentValues.TAG, "Ad dismissed fullscreen content.")
+                        mInterstitialAd = null
+                    }
+
+                    override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                        // Called when ad fails to show.
+                        Log.e(ContentValues.TAG, "Ad failed to show fullscreen content.")
+                        mInterstitialAd = null
+                    }
+
+                    override fun onAdImpression() {
+                        // Called when an impression is recorded for an ad.
+                        Log.d(ContentValues.TAG, "Ad recorded an impression.")
+                    }
+
+                    override fun onAdShowedFullScreenContent() {
+                        // Called when ad is shown.
+                        Log.d(ContentValues.TAG, "Ad showed fullscreen content.")
+                    }
+                }
+            }
+        })
+      /*  Handler().postDelayed({
+            if(mInterstitialAd !=null){
+                mInterstitialAd?.show(this)
+            }else Log.e("error","ad null")
+        },8000)*/
+
+        showInterstitialAdDelayed()
+
+
+
+        checkbox1.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 checkbox2.isChecked = false
                 checkbox3.isChecked = false
             }
         }
 
-        checkbox2.setOnCheckedChangeListener { buttonView, isChecked ->
+        checkbox2.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 checkbox1.isChecked = false
                 checkbox3.isChecked = false
             }
         }
 
-        checkbox3.setOnCheckedChangeListener { buttonView, isChecked ->
+        checkbox3.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 checkbox1.isChecked = false
                 checkbox2.isChecked = false
@@ -64,15 +132,15 @@ class TextRepeater : AppCompatActivity() {
         }
         btnGenerate.setOnClickListener {
 
-            val text = editTextMain.text.toString()
-            val noOfRepetitiation = editTextRepeater.text.toString().toInt()
-            if(text.isEmpty()){
+            if(editTextMain.text.isEmpty()){
                 Toast.makeText(this@TextRepeater,
                     "Enter the text",Toast.LENGTH_SHORT).show()
             }else if(editTextRepeater.text.isEmpty()) {
                 Toast.makeText(this@TextRepeater,
                     "Enter the number of Repetition",Toast.LENGTH_SHORT).show()
             }else{
+                val text = editTextMain.text.toString()
+                val noOfRepetitiation = editTextRepeater.text.toString().toInt()
                 val repeatedText = generateText(text, noOfRepetitiation)
                 mainText.text = repeatedText
             }
@@ -95,6 +163,28 @@ class TextRepeater : AppCompatActivity() {
             saveToClipboard(repeaterText)
         }
     }
+    private fun showInterstitialAdDelayed() {
+        val delayMillis = 1000L // Delay between each check in milliseconds
+        val maxAttempts = 10 // Maximum number of attempts
+
+        var currentAttempt = 0
+
+        val runnable = object : Runnable {
+            override fun run() {
+                if (mInterstitialAd != null) {
+                    mInterstitialAd?.show(this@TextRepeater)
+                } else {
+                    currentAttempt++
+                    if (currentAttempt <= maxAttempts) {
+                        Handler().postDelayed(this, delayMillis)
+                    } else {
+                        Log.e("error", "ad null")
+                    }
+                }
+            }
+        }
+        Handler().postDelayed(runnable, delayMillis)
+    }
 
     private fun saveToClipboard(desStr:String){
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -107,8 +197,7 @@ class TextRepeater : AppCompatActivity() {
     }
 
     private fun generateText(text:String,times: Int):String{
-        var result=""
-        result = if(checkbox1.isChecked){
+        val result: String = if(checkbox1.isChecked){
             repeatText(text, times)
         }else if(checkbox2.isChecked){
             repeatText(text,times,2)
