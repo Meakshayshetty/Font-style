@@ -18,6 +18,7 @@ class MainScreen : AppCompatActivity() {
     private var createBtn: ImageButton? = null
     private var encryptAndDecryptBtn: ImageButton? = null
     private var textRepeaterBtn: ImageButton? = null
+    private lateinit var bigTextBtn :ImageButton
 
     private lateinit var adView: AdView
 
@@ -29,6 +30,7 @@ class MainScreen : AppCompatActivity() {
         createBtn = findViewById(R.id.create_text_btn)
         encryptAndDecryptBtn = findViewById(R.id.encrypt_and_decrypt_btn)
         textRepeaterBtn = findViewById(R.id.text_repeater_btn)
+        bigTextBtn = findViewById(R.id.big_text_btn)
 
         MobileAds.initialize(this)
         val request = AdRequest.Builder().build()
@@ -40,15 +42,22 @@ class MainScreen : AppCompatActivity() {
             R.anim.shake_animation)
         imageView!!.startAnimation(animation1)
 
-        createBtn?.setOnClickListener {
 
-                val i = Intent(this@MainScreen, MainActivity::class.java)
-                startActivity(i)
+        bigTextBtn.setOnClickListener {
+            val i = Intent(this@MainScreen, BigtextActivity::class.java)
+            startActivity(i)
         }
+
+        createBtn?.setOnClickListener {
+            val i = Intent(this@MainScreen, MainActivity::class.java)
+            startActivity(i)
+        }
+
         encryptAndDecryptBtn?.setOnClickListener {
             val i = Intent(this@MainScreen, EncryptAndDecrypt::class.java)
             startActivity(i)
         }
+
         textRepeaterBtn?.setOnClickListener {
             val i = Intent(this@MainScreen, TextRepeater::class.java)
             startActivity(i)

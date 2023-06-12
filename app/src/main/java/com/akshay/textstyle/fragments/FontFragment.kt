@@ -164,12 +164,12 @@ class FontFragment : Fragment() {
         }*/
 
         if (fontsItems.isEmpty()) {
-            repeat(32) {
+            repeat(33) {
                 fontsItems.add(Font())
             }
         }else {
             fontsItems.clear()
-            repeat(32) {
+            repeat(33) {
                 fontsItems.add(Font())
             }
         }
@@ -208,7 +208,7 @@ class FontFragment : Fragment() {
     private fun updateDecorationFonts(text:String) {
         var editTextStr = text
         if (editTextStr.isEmpty()) {
-            editTextStr= "hey!"
+            editTextStr= "hello"
         }
         for (item in fontsItems.indices) {
             fontsItems[item].setPreviewText(editTextStr)

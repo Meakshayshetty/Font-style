@@ -32,9 +32,6 @@ class TextRepeater : AppCompatActivity() {
     private var mInterstitialAd:InterstitialAd?=null
 
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text_repater)
@@ -42,9 +39,9 @@ class TextRepeater : AppCompatActivity() {
         checkbox1 = findViewById(R.id.checkbox1)
         checkbox2 = findViewById(R.id.checkbox2)
         checkbox3 = findViewById(R.id.checkbox3)
-        btnGenerate = findViewById(R.id.generate_btn)
-        btnReset = findViewById(R.id.reset_btn)
-        editTextMain = findViewById(R.id.editText_main)
+        btnGenerate = findViewById(R.id.generate_btn_repeater)
+        btnReset = findViewById(R.id.reset_btn_repeater)
+        editTextMain = findViewById(R.id.editText_main_repeater)
         editTextRepeater = findViewById(R.id.editText_repetition)
         mainText = findViewById(R.id.main_text_repeater)
         mainClearBtn =findViewById(R.id.main_clear)
@@ -106,7 +103,7 @@ class TextRepeater : AppCompatActivity() {
             }else Log.e("error","ad null")
         },8000)*/
 
-        showInterstitialAdDelayed()
+       // showInterstitialAdDelayed()
 
 
 
@@ -159,6 +156,7 @@ class TextRepeater : AppCompatActivity() {
         }
 
         copyBtn.setOnClickListener{
+            showInterstitialAdDelayed()
             val repeaterText = mainText.text.toString()
             saveToClipboard(repeaterText)
         }

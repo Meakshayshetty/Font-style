@@ -1,16 +1,12 @@
 package com.akshay.textstyle.adapter
 
+import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.akshay.textstyle.R
@@ -18,17 +14,21 @@ import com.akshay.textstyle.model.Font
 
 class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: Activity): RecyclerView.Adapter<FontAdapter.MyViewHolder>() {
 
+    var textview = activity.findViewById<TextView>(R.id.main_text)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val row: View = LayoutInflater.from(activity).inflate(R.layout.adapter_font, parent, false)
         return MyViewHolder(row)
     }
 
+    @SuppressLint("NewApi")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val f: Font = fontItems[position]
-        //holder.title.setText(f.getFontName())
         val strBld: StringBuilder = StringBuilder(f.getPreviewText())
         when (position) {
-            0 -> {
+            0->{
+                holder.description.typeface = Typeface.DEFAULT
+            }
+            1 -> {
                 var charOne = 0
                 while (charOne <= strBld.length - 1) {
                     val a = strBld[charOne]
@@ -37,7 +37,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            1 -> {
+            2 -> {
                 var charOne = 0
                 while (charOne <= strBld.length - 1) {
                     val a = strBld[charOne]
@@ -46,7 +46,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            2 -> {
+            3 -> {
                 var charOne = 0
                 while (charOne <= strBld.length - 1) {
                     val a = strBld[charOne]
@@ -55,7 +55,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            3 -> {
+            4 -> {
                 var charOne = 0
                 while (charOne <= strBld.length - 1) {
                     val a = strBld[charOne]
@@ -64,7 +64,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            4 -> {
+            5 -> {
                 var charOne = 0
                 while (charOne <= strBld.length - 1) {
                     val a = strBld[charOne]
@@ -73,7 +73,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            5 -> {
+            6 -> {
                 var charOne = 0
                 while (charOne <= strBld.length - 1) {
                     val a = strBld[charOne]
@@ -82,7 +82,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            6 -> {
+            7 -> {
                 var charOne = 0
                 while (charOne <= strBld.length - 1) {
                     val a = strBld[charOne]
@@ -91,7 +91,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            7 -> if ("Preview text" == f.getPreviewText()) {
+            8 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -114,7 +114,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            8 -> if ("Preview text" == f.getPreviewText()) {
+            9 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (charOne == 0) {
@@ -156,7 +156,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            9 -> if ("Preview text" == f.getPreviewText()) {
+            10 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -179,7 +179,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            10 -> if ("Preview text" == f.getPreviewText()) {
+            11 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -202,7 +202,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            11 -> if ("Preview text" == f.getPreviewText()) {
+            12 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -225,7 +225,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            12 -> if ("Preview text" == f.getPreviewText()) {
+            13 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -248,7 +248,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            13 -> if ("Preview text" == f.getPreviewText()) {
+            14 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -271,7 +271,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            14 -> if ("Preview text" == f.getPreviewText()) {
+            15 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -294,7 +294,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            15 -> if ("Preview text" == f.getPreviewText()) {
+            16 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -317,7 +317,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            16 -> if ("Preview text" == f.getPreviewText()) {
+            17 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -340,7 +340,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            17 -> if ("Preview text" == f.getPreviewText()) {
+            18 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -363,7 +363,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            18 -> if ("Preview text" == f.getPreviewText()) {
+            19 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -386,7 +386,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            19 -> if ("Preview text" == f.getPreviewText()) {
+            20 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -409,7 +409,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            20 -> if ("Preview text" == f.getPreviewText()) {
+            21 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -432,7 +432,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            21 -> if ("Preview text" == f.getPreviewText()) {
+            22 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -455,7 +455,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            22 -> if ("Preview text" == f.getPreviewText()) {
+            23 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -478,7 +478,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            23 -> if ("Preview text" == f.getPreviewText()) {
+            24 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -501,7 +501,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            24 -> if ("Preview text" == f.getPreviewText()) {
+            25 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -524,7 +524,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            25 -> if ("Preview text" == f.getPreviewText()) {
+            26 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -547,7 +547,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            26 -> if ("Preview text" == f.getPreviewText()) {
+            27 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -570,7 +570,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            27 -> if ("Preview text" == f.getPreviewText()) {
+            28 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -593,7 +593,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            28 -> if ("Preview text" == f.getPreviewText()) {
+            29 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -616,7 +616,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            29 -> if ("Preview text" == f.getPreviewText()) {
+            30 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -639,7 +639,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            30 -> if ("Preview text" == f.getPreviewText()) {
+            31 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -662,7 +662,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            31 -> if ("Preview text" == f.getPreviewText()) {
+            32 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -697,21 +697,9 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
             //displaying modified string in textView
             mainText.text = desStr
 
-           /* activity.findViewById<ImageButton>(R.id.mainBtn).setOnClickListener {
-                Toast.makeText(activity,
-                    "Copied to clipboard! Your copied text is $desStr",
-                    Toast.LENGTH_SHORT).show()
-                saveToClipboard(desStr)*/
+
         }
     }
-
-
- /*   fun saveToClipboard(desStr:String){
-        val clipboard =
-            activity.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("simple text", desStr)
-        clipboard.setPrimaryClip(clip)
-    }*/
 
 
     private fun getSpecialCharFirst(a: Char): Char {

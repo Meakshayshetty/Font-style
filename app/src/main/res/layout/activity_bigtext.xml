@@ -10,7 +10,7 @@
 
 
     <com.google.android.gms.ads.AdView
-        android:id="@+id/repeater_adView"
+        android:id="@+id/bigtext_adView"
         app:adSize="BANNER"
         app:adUnitId="@string/repeater_screen_banner_add_unit_id"
         android:layout_width="wrap_content"
@@ -24,15 +24,15 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/fl_editText_repeat"
+        app:layout_constraintBottom_toTopOf="@+id/ll_reset_and_generate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/repeater_adView"
+        app:layout_constraintTop_toBottomOf="@+id/bigtext_adView"
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
-            android:id="@+id/editText_main_repeater"
+            android:id="@+id/editText_main_big"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -50,7 +50,7 @@
             android:textSize="18sp" />
 
         <ImageButton
-            android:id="@+id/main_clear"
+            android:id="@+id/big_main_clear"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center|end"
@@ -60,80 +60,6 @@
 
     </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/fl_editText_repeat"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/ll_checkBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_Edittextttxt"
-        app:layout_constraintVertical_bias="0.0">
-
-        <EditText
-            android:id="@+id/editText_repetition"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:autofillHints="number"
-            android:background="@drawable/custom_edit_text_rounded"
-            android:gravity="center"
-            android:hint="Repetition Limit"
-            android:imeOptions="actionSearch"
-            android:inputType="number"
-            android:padding="10dp"
-            android:maxLength= "3"
-            android:textColor="@color/black"
-            android:textColorHint="@color/brown"
-            android:textSize="18sp" />
-
-        <ImageButton
-            android:id="@+id/repeat_clear"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center|end"
-            android:layout_margin="15dp"
-            android:background="@color/white"
-            android:src="@drawable/clear_icon" />
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_checkBox"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_margin="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/fl_editText_repeat"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <CheckBox
-            android:id="@+id/checkbox1"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:text="Continuous"
-            android:checked="true"/>
-
-        <CheckBox
-            android:id="@+id/checkbox2"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:text="Space"/>
-
-        <CheckBox
-            android:id="@+id/checkbox3"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:text="New Line"/>
-
-    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -141,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@id/ll_checkBox"
+        app:layout_constraintTop_toBottomOf="@id/fl_Edittextttxt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -152,7 +78,7 @@
 
             <ImageButton
                 android:layout_margin="10dp"
-                android:id="@+id/generate_btn_repeater"
+                android:id="@+id/generate_btn_big"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -176,7 +102,7 @@
 
             <ImageButton
                 android:layout_margin="10dp"
-                android:id="@+id/reset_btn_repeater"
+                android:id="@+id/reset_btn_big"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -198,9 +124,9 @@
     <ScrollView
         android:background="@drawable/custom_button_white"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="350dp"
         android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@id/repeater_copy"
+        app:layout_constraintBottom_toTopOf="@id/big_copy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_reset_and_generate"
@@ -213,7 +139,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/main_text_repeater"
+                android:id="@+id/main_text_big"
                 android:layout_width="wrap_content"
                 android:layout_margin="15dp"
                 android:layout_height="wrap_content"
@@ -226,9 +152,8 @@
     </ScrollView>
 
 
-
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/repeater_copy"
+        android:id="@+id/big_copy"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"

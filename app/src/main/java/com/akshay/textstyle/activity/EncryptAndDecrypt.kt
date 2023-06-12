@@ -96,7 +96,7 @@ class EncryptAndDecrypt : AppCompatActivity() {
             }else Log.e("error","ad null")
         },8000)*/
 
-        showInterstitialAdDelayed()
+        //showInterstitialAdDelayed()
 
 
         encryptBtn?.setOnClickListener {
@@ -119,6 +119,10 @@ class EncryptAndDecrypt : AppCompatActivity() {
             val mainTextString = with(mainText){this?.text.toString()}
             saveToClipboard(mainTextString)
         }
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        showInterstitialAdDelayed()
     }
 
     private fun showInterstitialAdDelayed() {
