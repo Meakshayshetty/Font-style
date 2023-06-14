@@ -7,9 +7,12 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.widget.*
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akshay.textstyle.R
+import com.akshay.textstyle.databinding.ActivityEncryptAndDecryptBinding
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -19,33 +22,24 @@ class EncryptAndDecrypt : AppCompatActivity() {
 
     private var editTextMain :EditText?=null
     private var mainText:TextView?=null
-    private var btnCopy :Button?=null
-    private var btnClear :ImageButton?=null
-    private var encryptBtn:ImageButton?=null
-    private var decryptBtn:ImageButton?=null
+
 
     private var mInterstitialAd: InterstitialAd? = null
-    private lateinit var adView:AdView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_encrypt_and_decrypt)
+        val binding = ActivityEncryptAndDecryptBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        editTextMain = findViewById(R.id.edit_text_sizeColor_main)
-        mainText = findViewById(R.id.main_text_encrypt)
-        btnCopy = findViewById(R.id.btn_copy)
-        btnClear = findViewById(R.id.ib_clear)
+        editTextMain = binding.editTextEncryptAndDecrypt
+        mainText = binding.mainTextEncrypt
 
-        encryptBtn = findViewById(R.id.encrypt_btn)
-        decryptBtn = findViewById(R.id.decrypt_btn)
 
 
         MobileAds.initialize(this)
 
-        adView = findViewById(R.id.adView_encrypt)
         val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
+        binding.adViewEncrypt.loadAd(adRequest)
 
 
         InterstitialAd.load(this,getString(R.string.encrypt_screen_interstitial_uniid),adRequest, object : InterstitialAdLoadCallback() {
@@ -99,27 +93,28 @@ class EncryptAndDecrypt : AppCompatActivity() {
         //showInterstitialAdDelayed()
 
 
-        encryptBtn?.setOnClickListener {
+        binding.encryptBtn.setOnClickListener {
             val string = with(editTextMain){this?.text.toString()}
             val encryptString = encrypt(string)
             with(mainText){this?.text= encryptString}
         }
 
-        decryptBtn?.setOnClickListener {
+        binding.decryptBtn.setOnClickListener {
             val string = with(editTextMain){this?.text.toString()}
             val decryptString = decrypt(string)
             with(mainText){this?.text= decryptString}
         }
 
-        btnClear?.setOnClickListener {
+        binding.ibClear.setOnClickListener {
             with(editTextMain) { this?.setText("") }
         }
 
-        btnCopy?.setOnClickListener {
+        binding.btnCopy.setOnClickListener {
             val mainTextString = with(mainText){this?.text.toString()}
             saveToClipboard(mainTextString)
         }
     }
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
         showInterstitialAdDelayed()

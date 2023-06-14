@@ -7,9 +7,13 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.widget.*
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akshay.textstyle.R
+import com.akshay.textstyle.databinding.ActivityTextRepaterBinding
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -19,41 +23,31 @@ class TextRepeater : AppCompatActivity() {
     private lateinit var checkbox1: CheckBox
     private lateinit var checkbox2: CheckBox
     private lateinit var checkbox3: CheckBox
-    private lateinit var btnGenerate:ImageButton
-    private lateinit var btnReset:ImageButton
     private lateinit var editTextMain:EditText
     private lateinit var editTextRepeater:EditText
     private lateinit var mainText:TextView
-    private lateinit var mainClearBtn:ImageButton
-    private lateinit var repeaterClrBtn:ImageButton
-    private lateinit var copyBtn:Button
 
-    private lateinit var adView:AdView
     private var mInterstitialAd:InterstitialAd?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_text_repater)
+        val binding = ActivityTextRepaterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        checkbox1 = findViewById(R.id.checkbox1)
-        checkbox2 = findViewById(R.id.checkbox2)
-        checkbox3 = findViewById(R.id.checkbox3)
-        btnGenerate = findViewById(R.id.generate_btn_repeater)
-        btnReset = findViewById(R.id.reset_btn_repeater)
-        editTextMain = findViewById(R.id.editText_main_repeater)
-        editTextRepeater = findViewById(R.id.editText_repetition)
-        mainText = findViewById(R.id.main_text_repeater)
-        mainClearBtn =findViewById(R.id.main_clear)
-        repeaterClrBtn =findViewById(R.id.repeat_clear)
-        copyBtn =findViewById(R.id.repeater_copy)
+        checkbox1 = binding.checkbox1
+        checkbox2 = binding.checkbox2
+        checkbox3 = binding.checkbox3
+        editTextMain = binding.editTextMainRepeater
+        editTextRepeater = binding.editTextRepetition
+        mainText = binding.mainTextRepeater
 
-        adView = findViewById(R.id.repeater_adView)
+
 
         MobileAds.initialize(this)
 
         val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
+        binding.repeaterAdView.loadAd(adRequest)
 
         InterstitialAd.load(this,getString(R.string.text_repeater_interstitial_uniid),adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -127,7 +121,7 @@ class TextRepeater : AppCompatActivity() {
                 checkbox2.isChecked = false
             }
         }
-        btnGenerate.setOnClickListener {
+        binding.generateBtnRepeater.setOnClickListener {
 
             if(editTextMain.text.isEmpty()){
                 Toast.makeText(this@TextRepeater,
@@ -142,20 +136,20 @@ class TextRepeater : AppCompatActivity() {
                 mainText.text = repeatedText
             }
         }
-        mainClearBtn.setOnClickListener {
+        binding.mainClear.setOnClickListener {
             editTextMain.setText("")
         }
-        repeaterClrBtn.setOnClickListener {
+        binding.repeatClear.setOnClickListener {
             editTextRepeater.setText("")
         }
 
-        btnReset.setOnClickListener {
+        binding.resetBtnRepeater.setOnClickListener {
             editTextMain.setText("")
             editTextRepeater.setText("")
             mainText.text = ""
         }
 
-        copyBtn.setOnClickListener{
+        binding.repeaterCopy.setOnClickListener{
             showInterstitialAdDelayed()
             val repeaterText = mainText.text.toString()
             saveToClipboard(repeaterText)

@@ -7,9 +7,10 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.widget.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akshay.textstyle.R
+import com.akshay.textstyle.databinding.ActivityBigtextBinding
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -126,13 +127,13 @@ class BigtextActivity : AppCompatActivity() {
             " ████████ "
         ),
         'M' to listOf(
-            " ██       ██ ",
-            " ███    █ ██ ",
-            " ██ ██    ██  ",
-            " ██ ██    ██  ",
-            " ██          ██ ",
-            " ██          ██ ",
-            " ██          ██ "
+            " ██        ██ ",
+            " ██ █    █ ██ ",
+            " ██  ██    ██  ",
+            " ██  ██    ██  ",
+            " ██           ██ ",
+            " ██           ██ ",
+            " ██           ██ "
         ),
         'N' to listOf(
             " ██         ██ ",
@@ -253,17 +254,6 @@ class BigtextActivity : AppCompatActivity() {
         )
     )
 
-    private lateinit var editTxtMain: EditText
-    private lateinit var mainText: TextView
-
-    private lateinit var generateBigChar: ImageButton
-    private lateinit var resetBtn: ImageButton
-
-    private lateinit var copyBtn: Button
-
-    private lateinit var adView: AdView
-    private lateinit var clearBtn :ImageButton
-
     private var mInterstitialAd: InterstitialAd?=null
 
 
@@ -271,25 +261,19 @@ class BigtextActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bigtext)
+        val binding = ActivityBigtextBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        editTxtMain = findViewById(R.id.editText_main_big)
-        mainText = findViewById(R.id.main_text_big)
+       val editTxtMain = binding.editTextMainBig
+        val mainText = binding.mainTextBig
 
-        generateBigChar = findViewById(R.id.generate_btn_big)
-        resetBtn = findViewById(R.id.reset_btn_big)
-
-        copyBtn = findViewById(R.id.big_copy)
-
-        adView = findViewById(R.id.bigtext_adView)
-        clearBtn =findViewById(R.id.big_main_clear)
 
         MobileAds.initialize(this)
 
         val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
+        binding.bigtextAdView.loadAd(adRequest)
 
-        clearBtn.setOnClickListener {
+        binding.bigMainClear.setOnClickListener {
             editTxtMain.setText("")
         }
 
@@ -337,7 +321,7 @@ class BigtextActivity : AppCompatActivity() {
             }
         })
 
-        generateBigChar.setOnClickListener {
+        binding.generateBtnBig.setOnClickListener {
             val text = editTxtMain.text.toString().toUpperCase()
 
             val charArray = text.toCharArray()
@@ -357,12 +341,12 @@ class BigtextActivity : AppCompatActivity() {
         }
 
 
-        copyBtn.setOnClickListener {
+        binding.bigCopy.setOnClickListener {
             saveToClipboard(mainText.text.toString())
             showInterstitialAdDelayed()
         }
 
-        resetBtn.setOnClickListener {
+        binding.resetBtnBig.setOnClickListener {
             editTxtMain.setText("")
             mainText.text = ""
         }

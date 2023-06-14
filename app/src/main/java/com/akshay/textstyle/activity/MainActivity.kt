@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +18,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.akshay.textstyle.R
+import com.akshay.textstyle.databinding.ActivityMainBinding
 import com.akshay.textstyle.fragments.*
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
@@ -36,32 +36,30 @@ class MainActivity : AppCompatActivity() {
         R.drawable.maths_icons,
         R.drawable.number_icon,
         R.drawable.arrow_icon,
-        R.drawable.random_icon,)
-
-    private var tabLayout: TabLayout? = null
-    private var clearBtn:ImageButton? =null
-    private var mainText:TextView? =null
-    private var editText:EditText? =null
-    private var doneBtn :ImageButton? =null
-    private var copyText:String?= null
-    private lateinit var adView :AdView
+        R.drawable.random_icon,
+    )
+    private lateinit var tabLayout:TabLayout
+    private lateinit var editText :EditText
+    private lateinit var mainText:TextView
 
     private var mInterstitialAd: InterstitialAd? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        adView = findViewById(R.id.adView)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         MobileAds.initialize(this)
 
         val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
+        binding.adView.loadAd(adRequest)
 
 
-        InterstitialAd.load(this@MainActivity,getString(R.string.mainScreen_interstitial_ad_unitId),adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this@MainActivity,
+            getString(R.string.mainScreen_interstitial_ad_unitId),
+            adRequest,
+            object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     adError.toString().let { Log.d(ContentValues.TAG, it) }
                     Log.d("not load", "error loading.")
@@ -73,64 +71,58 @@ class MainActivity : AppCompatActivity() {
                     Log.d("load", "ad loaded.")
                     mInterstitialAd = interstitialAd
 
-                    mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
-                        override fun onAdClicked() {
-                            // Called when a click is recorded for an ad.
-                            Log.d(ContentValues.TAG, "Ad was clicked.")
-                        }
+                    mInterstitialAd?.fullScreenContentCallback =
+                        object : FullScreenContentCallback() {
+                            override fun onAdClicked() {
+                                // Called when a click is recorded for an ad.
+                                Log.d(ContentValues.TAG, "Ad was clicked.")
+                            }
 
-                        override fun onAdDismissedFullScreenContent() {
-                            // Called when ad is dismissed.
-                            Log.d(ContentValues.TAG, "Ad dismissed fullscreen content.")
-                            mInterstitialAd = null
-                        }
+                            override fun onAdDismissedFullScreenContent() {
+                                // Called when ad is dismissed.
+                                Log.d(ContentValues.TAG, "Ad dismissed fullscreen content.")
+                                mInterstitialAd = null
+                            }
 
-                        override fun onAdFailedToShowFullScreenContent(p0: AdError) {
-                            // Called when ad fails to show.
-                            Log.e(ContentValues.TAG, "Ad failed to show fullscreen content.")
-                            mInterstitialAd = null
-                        }
+                            override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                                // Called when ad fails to show.
+                                Log.e(ContentValues.TAG, "Ad failed to show fullscreen content.")
+                                mInterstitialAd = null
+                            }
 
-                        override fun onAdImpression() {
-                            // Called when an impression is recorded for an ad.
-                            Log.d(ContentValues.TAG, "Ad recorded an impression.")
-                        }
+                            override fun onAdImpression() {
+                                // Called when an impression is recorded for an ad.
+                                Log.d(ContentValues.TAG, "Ad recorded an impression.")
+                            }
 
-                        override fun onAdShowedFullScreenContent() {
-                            // Called when ad is shown.
-                            Log.d(ContentValues.TAG, "Ad showed fullscreen content.")
+                            override fun onAdShowedFullScreenContent() {
+                                // Called when ad is shown.
+                                Log.d(ContentValues.TAG, "Ad showed fullscreen content.")
+                            }
                         }
-                    }
                 }
             })
 
         showInterstitialAdDelayed()
-   /*     Handler().postDelayed({
-            if(mInterstitialAd !=null){
-                mInterstitialAd?.show(this)
-            }else Log.e("error","ad null")
-        },5000)*/
+        /*     Handler().postDelayed({
+                 if(mInterstitialAd !=null){
+                     mInterstitialAd?.show(this)
+                 }else Log.e("error","ad null")
+             },5000)*/
 
+        tabLayout = binding.tabLayout
+        editText =binding.editTextMain
+        mainText = binding.mainText
         tab()
-        clearBtn = findViewById(R.id.imageButton_clear)
-        mainText=findViewById(R.id.main_text)
-        editText=findViewById(R.id.edit_text_main)
-        doneBtn= findViewById(R.id.mainBtn)
-
-
-        with(clearBtn){
-            this?.setOnClickListener {
-                editText?.setText("")
-                mainText?.text = ""
-            }
+        
+        binding.imageButtonClear.setOnClickListener {
+            editText.setText("")
+            mainText.text = ""
         }
 
-        doneBtn?.setOnClickListener {
-            with(mainText){
-                copyText = this?.text.toString()
-                saveToClipboard(copyText!!)
-                //Toast.makeText(this@MainActivity,"$copy_text saved",Toast.LENGTH_SHORT).show()
-            }
+        binding.mainBtn.setOnClickListener {
+                val copyText = binding.mainText.text.toString()
+                saveToClipboard(copyText)
         }
     }
 
@@ -158,7 +150,7 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed(runnable, delayMillis)
     }
 
-    private fun saveToClipboard(desStr:String){
+    private fun saveToClipboard(desStr: String) {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("simple text", desStr)
         clipboard.setPrimaryClip(clip)
@@ -171,20 +163,18 @@ class MainActivity : AppCompatActivity() {
     private fun tab() {
         val viewPager: ViewPager = findViewById(R.id.viewPager)
         setupViewPager(viewPager)
-        tabLayout = findViewById(R.id.tabLayout)
         with(tabLayout) {
             setupViewPager(viewPager)
-            //tabLayout = findViewById(R.id.tabLayout)
-            this?.setupWithViewPager(viewPager)
+            this.setupWithViewPager(viewPager)
         }
         setupTabIcons()
         with(tabLayout) {
             setupViewPager(viewPager)
-           // tabLayout = findViewById(R.id.tabLayout)
-            this?.setupWithViewPager(viewPager)
+            // tabLayout = findViewById(R.id.tabLayout)
+            this.setupWithViewPager(viewPager)
             setupTabIcons()
 
-            this?.addOnTabSelectedListener(object :
+            this.addOnTabSelectedListener(object :
                 TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
 
                 override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -199,7 +189,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupTabIcons() {
         for (i in tabIcons.indices) {
-            tabLayout!!.getTabAt(i)!!.setIcon(tabIcons[i])
+            tabLayout.getTabAt(i)!!.setIcon(tabIcons[i])
         }
     }
 
@@ -220,7 +210,7 @@ class MainActivity : AppCompatActivity() {
     class ViewPagerAdapter(supportFragmentManager: FragmentManager) :
         FragmentPagerAdapter(supportFragmentManager) {
         private val mFragmentList = mutableListOf<Fragment>()
-       // private val mFragmentTitleList = mutableListOf<String>()
+        // private val mFragmentTitleList = mutableListOf<String>()
 
         override fun getItem(position: Int): Fragment {
             return mFragmentList[position]
@@ -233,9 +223,5 @@ class MainActivity : AppCompatActivity() {
         fun addFrag(fragment: Fragment) {
             mFragmentList.add(fragment)
         }
-
-      /*  override fun getPageTitle(position: Int): CharSequence {
-            return mFragmentTitleList[position]
-        }*/
     }
 }
