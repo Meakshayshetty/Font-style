@@ -164,12 +164,12 @@ class FontFragment : Fragment() {
         }*/
 
         if (fontsItems.isEmpty()) {
-            repeat(33) {
+            repeat(64) {
                 fontsItems.add(Font())
             }
         }else {
             fontsItems.clear()
-            repeat(33) {
+            repeat(64) {
                 fontsItems.add(Font())
             }
         }
