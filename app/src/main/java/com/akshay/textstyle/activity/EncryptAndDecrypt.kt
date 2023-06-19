@@ -40,6 +40,7 @@ class EncryptAndDecrypt : AppCompatActivity() {
 
         val adRequest = AdRequest.Builder().build()
         binding.adViewEncrypt.loadAd(adRequest)
+        binding.adView2Encrypt.loadAd(adRequest)
 
 
         InterstitialAd.load(this,getString(R.string.encrypt_screen_interstitial_uniid),adRequest, object : InterstitialAdLoadCallback() {
@@ -110,14 +111,10 @@ class EncryptAndDecrypt : AppCompatActivity() {
         }
 
         binding.btnCopy.setOnClickListener {
+            showInterstitialAdDelayed()
             val mainTextString = with(mainText){this?.text.toString()}
             saveToClipboard(mainTextString)
         }
-    }
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        super.onBackPressed()
-        showInterstitialAdDelayed()
     }
 
     private fun showInterstitialAdDelayed() {

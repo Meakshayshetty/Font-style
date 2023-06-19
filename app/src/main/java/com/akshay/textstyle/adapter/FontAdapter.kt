@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.akshay.textstyle.R
 import com.akshay.textstyle.model.Font
 
-class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: Activity): RecyclerView.Adapter<FontAdapter.MyViewHolder>() {
+class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: Activity) :
+    RecyclerView.Adapter<FontAdapter.MyViewHolder>() {
 
     var textview: TextView = activity.findViewById(R.id.main_text)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -25,7 +26,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
         val f: Font = fontItems[position]
         val strBld: StringBuilder = StringBuilder(f.getPreviewText())
         when (position) {
-            0->{
+            0 -> {
                 holder.description.typeface = Typeface.DEFAULT
             }
             1 -> {
@@ -91,7 +92,418 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            8 -> if ("Preview text" == f.getPreviewText()) {
+
+            8 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getSquareChar(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            9 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getSpecialCharUnderlined(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+
+            10 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            11 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar2(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            12 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar3(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            13 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getRoundAlphabetChar(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            14 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getSquareBlockAlphabetChar(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            15 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar4(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            16 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar5(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            17 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar6(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            18 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar7(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            19 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar8(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            20 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar9(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            21 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar10(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            22 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar11(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            23 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar12(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            24 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar13(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            25 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar14(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            26 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar15(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            27 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar16(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            28 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar17(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            29 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar18(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            30 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar19(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            31 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar20(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            32 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar21(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            33 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar22(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            34 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar23(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            35 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar24(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            36 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar25(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            37 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar26(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            38 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar27(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            39 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar28(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            40 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar29(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            41 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar30(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+
+            42 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -114,7 +526,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            9 -> if ("Preview text" == f.getPreviewText()) {
+            43 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (charOne == 0) {
@@ -156,7 +568,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            10 -> if ("Preview text" == f.getPreviewText()) {
+            44 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -179,7 +591,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            11 -> if ("Preview text" == f.getPreviewText()) {
+            45 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -202,7 +614,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            12 -> if ("Preview text" == f.getPreviewText()) {
+            46 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -225,7 +637,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            13 -> if ("Preview text" == f.getPreviewText()) {
+            47 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -248,7 +660,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            14 -> if ("Preview text" == f.getPreviewText()) {
+            48 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -271,7 +683,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            15 -> if ("Preview text" == f.getPreviewText()) {
+            49 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -294,7 +706,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            16 -> if ("Preview text" == f.getPreviewText()) {
+            50 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -317,7 +729,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            17 -> if ("Preview text" == f.getPreviewText()) {
+            51 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -340,7 +752,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            18 -> if ("Preview text" == f.getPreviewText()) {
+            52 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -363,7 +775,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            19 -> if ("Preview text" == f.getPreviewText()) {
+            53 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -386,7 +798,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            20 -> if ("Preview text" == f.getPreviewText()) {
+            54 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -409,7 +821,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            21 -> if ("Preview text" == f.getPreviewText()) {
+            55 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -432,7 +844,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            22 -> if ("Preview text" == f.getPreviewText()) {
+            56 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -455,7 +867,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            23 -> if ("Preview text" == f.getPreviewText()) {
+            57 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -478,7 +890,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            24 -> if ("Preview text" == f.getPreviewText()) {
+            58 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -501,7 +913,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            25 -> if ("Preview text" == f.getPreviewText()) {
+            59 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -524,7 +936,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            26 -> if ("Preview text" == f.getPreviewText()) {
+            60 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -547,7 +959,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            27 -> if ("Preview text" == f.getPreviewText()) {
+            61 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -570,7 +982,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            28 -> if ("Preview text" == f.getPreviewText()) {
+            62 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -593,7 +1005,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            29 -> if ("Preview text" == f.getPreviewText()) {
+            63 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -616,7 +1028,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            30 -> if ("Preview text" == f.getPreviewText()) {
+            64 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -639,7 +1051,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            31 -> if ("Preview text" == f.getPreviewText()) {
+            65 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -662,7 +1074,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            32 -> if ("Preview text" == f.getPreviewText()) {
+            66 -> if ("Preview text" == f.getPreviewText()) {
                 var charOne = 0
                 while (charOne < strBld.length) {
                     if (strBld[charOne] == ' ' && strBld.length - 1 != charOne) {
@@ -685,384 +1097,11 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
-            33 -> {
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getSquareChar(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            34-> {
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getSpecialCharUnderlined(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-
-            35 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            36 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar2(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            37 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar3(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            38 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getRoundAlphabetChar(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            39 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getSquareBlockAlphabetChar(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            40 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar4(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            41 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar5(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            42 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar6(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            43 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar7(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            44 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar8(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            45 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar9(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            46 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar10(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            47 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar11(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            48 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar12(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            49 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar13(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            50 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar14(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            51 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar15(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            52 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar16(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            53 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar17(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            54 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar18(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            55 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar19(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            56 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar20(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            57 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar21(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            58 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar22(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            59 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar23(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            60 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar24(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            61 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar25(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            62 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar26(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
-            63 ->{
-                var charOne = 0
-                val modifiedStrBld = StringBuilder()
-                while (charOne <= strBld.length - 1) {
-                    val a = strBld[charOne]
-                    val newCh = getFancyAlphabetChar27(a)
-                    modifiedStrBld.append(newCh)
-                    charOne++
-                }
-                strBld.clear()
-                strBld.append(modifiedStrBld)
-            }
         }
 
         f.setPreviewText(strBld.toString())
         holder.description.text = f.getPreviewText()
-        holder.cardView.setOnClickListener{
+        holder.cardView.setOnClickListener {
             val desStr = holder.description.text.toString()
             val mainText = activity.findViewById<TextView>(R.id.main_text)
 
@@ -1070,6 +1109,103 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
             mainText.text = desStr
         }
     }
+
+    private fun getFancyAlphabetChar30(char: Char): String {
+        return when (char.lowercaseChar()) {
+            'a' -> "ค"
+            'b' -> "๖"
+            'c' -> "¢"
+            'd' -> "໓"
+            'e' -> "ē"
+            'f' -> "f"
+            'g' -> "ງ"
+            'h' -> "h"
+            'i' -> "i"
+            'j' -> "ว"
+            'k' -> "k"
+            'l' -> "l"
+            'm' -> "๓"
+            'n' -> "ຖ"
+            'o' -> "໐"
+            'p' -> "p"
+            'q' -> "๑"
+            'r' -> "r"
+            's' -> "Ş"
+            't' -> "t"
+            'u' -> "น"
+            'v' -> "ง"
+            'w' -> "ຟ"
+            'x' -> "x"
+            'y' -> "ฯ"
+            'z' -> "ຊ"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar29(char: Char): String {
+        return when (char.lowercaseChar()) {
+            'a' -> "Թ"
+            'b' -> "Յ"
+            'c' -> "Շ"
+            'd' -> "Ժ"
+            'e' -> "ȝ"
+            'f' -> "Բ"
+            'g' -> "Գ"
+            'h' -> "ɧ"
+            'i' -> "ɿ"
+            'j' -> "ʝ"
+            'k' -> "ƙ"
+            'l' -> "ʅ"
+            'm' -> "ʍ"
+            'n' -> "Ռ"
+            'o' -> "Ծ"
+            'p' -> "ρ"
+            'q' -> "φ"
+            'r' -> "Ր"
+            's' -> "Տ"
+            't' -> "Ե"
+            'u' -> "Մ"
+            'v' -> "ע"
+            'w' -> "ա"
+            'x' -> "Ճ"
+            'y' -> "Վ"
+            'z' -> "Հ"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar28(char: Char): String {
+        return when (char.lowercaseChar()) {
+            'a' -> "Ꮧ"
+            'b' -> "Ᏸ"
+            'c' -> "ፈ"
+            'd' -> "Ꮄ"
+            'e' -> "Ꮛ"
+            'f' -> "Ꭶ"
+            'g' -> "Ꮆ"
+            'h' -> "Ꮒ"
+            'i' -> "Ꭵ"
+            'j' -> "Ꮰ"
+            'k' -> "Ꮶ"
+            'l' -> "Ꮭ"
+            'm' -> "Ꮇ"
+            'n' -> "Ꮑ"
+            'o' -> "Ꭷ"
+            'p' -> "Ꭾ"
+            'q' -> "Ꭴ"
+            'r' -> "Ꮢ"
+            's' -> "Ꮥ"
+            't' -> "Ꮦ"
+            'u' -> "Ꮼ"
+            'v' -> "Ꮙ"
+            'w' -> "Ꮗ"
+            'x' -> "ጀ"
+            'y' -> "Ꭹ"
+            'z' -> "ፚ"
+            else -> char.toString()
+        }
+    }
+
     private fun getFancyAlphabetChar27(char: Char): String {
         return when (char.uppercaseChar()) {
             'A' -> "ᗩ"
@@ -1339,21 +1475,21 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
             'I' -> "ᓿ"
             'J' -> "ᒙ"
             'K' -> "ᖽ"
-            'L' -> "ᐸ"
-            'M' -> "ᒪ"
-            'N' -> "ᙢ"
-            'O' -> "ᘉ"
-            'P' -> "ᓎ"
-            'Q' -> "ᕿ"
-            'R' -> "ᕴ"
-            'S' -> "ᖇ"
-            'T' -> "S"
-            'U' -> "ᖶ"
-            'V' -> "ᑗ"
-            'W' -> "ᐻ"
-            'X' -> "ᙎ"
-            'Y' -> "᙭"
-            'Z' -> "ᖻ"
+            'L' -> "ᒪ"
+            'M' -> "ᙢ"
+            'N' -> "ᘉ"
+            'O' -> "ᓎ"
+            'P' -> "ᕿ"
+            'Q' -> "ᕴ"
+            'R' -> "ᖇ"
+            'S' -> "S"
+            'T' -> "ᖶ"
+            'U' -> "ᑗ"
+            'V' -> "ᐻ"
+            'W' -> "ᙎ"
+            'X' -> "᙭"
+            'Y' -> "ᖻ"
+            'Z' -> "Z"
             else -> char.toString()
         }
     }
@@ -1705,7 +1841,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
     }
 
     private fun getFancyAlphabetChar8(char: Char): String {
-        return when (char.toLowerCase()) {
+        return when (char.lowercaseChar()) {
             'a' -> "α"
             'b' -> "Ⴆ"
             'c' -> "ƈ"
@@ -1863,7 +1999,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
     }
 
     private fun getFancyAlphabetChar5(char: Char): String {
-        return when (char.uppercaseChar()) {
+        return when (char) {
             'A' -> "𝔸"
             'B' -> "𝔹"
             'C' -> "ℂ"
@@ -1900,35 +2036,33 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
             '7' -> "𝟟"
             '8' -> "𝟠"
             '9' -> "𝟡"
-            else -> when (char.lowercaseChar()) {
-                'a' -> "𝕒"
-                'b' -> "𝕓"
-                'c' -> "𝕔"
-                'd' -> "𝕕"
-                'e' -> "𝕖"
-                'f' -> "𝕗"
-                'g' -> "𝕘"
-                'h' -> "𝕙"
-                'i' -> "𝕚"
-                'j' -> "𝕛"
-                'k' -> "𝕜"
-                'l' -> "𝕝"
-                'm' -> "𝕞"
-                'n' -> "𝕟"
-                'o' -> "𝕠"
-                'p' -> "𝕡"
-                'q' -> "𝕢"
-                'r' -> "𝕣"
-                's' -> "𝕤"
-                't' -> "𝕥"
-                'u' -> "𝕦"
-                'v' -> "𝕧"
-                'w' -> "𝕨"
-                'x' -> "𝕩"
-                'y' -> "𝕪"
-                'z' -> "𝕫"
-                else -> char.toString()
-            }
+            'a' -> "𝕒"
+            'b' -> "𝕓"
+            'c' -> "𝕔"
+            'd' -> "𝕕"
+            'e' -> "𝕖"
+            'f' -> "𝕗"
+            'g' -> "𝕘"
+            'h' -> "𝕙"
+            'i' -> "𝕚"
+            'j' -> "𝕛"
+            'k' -> "𝕜"
+            'l' -> "𝕝"
+            'm' -> "𝕞"
+            'n' -> "𝕟"
+            'o' -> "𝕠"
+            'p' -> "𝕡"
+            'q' -> "𝕢"
+            'r' -> "𝕣"
+            's' -> "𝕤"
+            't' -> "𝕥"
+            'u' -> "𝕦"
+            'v' -> "𝕧"
+            'w' -> "𝕨"
+            'x' -> "𝕩"
+            'y' -> "𝕪"
+            'z' -> "𝕫"
+            else -> char.toString()
         }
     }
 
@@ -2124,61 +2258,35 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
         }
     }
 
-    private fun getSpecialCharUnderlined(a: Char): String {
-        return when (a.uppercaseChar()) {
-            'A' -> "A̲"
-            'B' -> "B̲"
-            'C' -> "C̲"
-            'D' -> "D̲"
-            'E' -> "E̲"
-            'F' -> "F̲"
-            'G' -> "G̲"
-            'H' -> "H̲"
-            'I' -> "I̲"
-            'J' -> "J̲"
-            'K' -> "K̲"
-            'L' -> "L̲"
-            'M' -> "M̲"
-            'N' -> "N̲"
-            'O' -> "O̲"
-            'P' -> "P̲"
-            'Q' -> "Q̲"
-            'R' -> "R̲"
-            'S' -> "S̲"
-            'T' -> "T̲"
-            'U' -> "U̲"
-            'V' -> "V̲"
-            'W' -> "W̲"
-            'X' -> "X̲"
-            'Y' -> "Y̲"
-            'Z' -> "Z̲"
-            'a' -> "a̲"
-            'b' -> "b̲"
-            'c' -> "c̲"
-            'd' -> "d̲"
-            'e' -> "e̲"
-            'f' -> "f̲"
-            'g' -> "g̲"
-            'h' -> "h̲"
-            'i' -> "i̲"
-            'j' -> "j̲"
-            'k' -> "k̲"
-            'l' -> "l̲"
-            'm' -> "m̲"
-            'n' -> "n̲"
-            'o' -> "o̲"
-            'p' -> "p̲"
-            'q' -> "q̲"
-            'r' -> "r̲"
-            's' -> "s̲"
-            't' -> "t̲"
-            'u' -> "u̲"
-            'v' -> "v̲"
-            'w' -> "w̲"
-            'x' -> "x̲"
-            'y' -> "y̲"
-            'z' -> "z̲"
-            else -> a.toString()
+    private fun getSpecialCharUnderlined(char: Char): String {
+        return when (char.lowercaseChar()) {
+            'a' -> "ɐ"
+            'b' -> "b"
+            'c' -> "ɔ"
+            'd' -> "d"
+            'e' -> "ǝ"
+            'f' -> "ɟ"
+            'g' -> "ƃ"
+            'h' -> "ɥ"
+            'i' -> "ı"
+            'j' -> "ɾ"
+            'k' -> "ʞ"
+            'l' -> "l"
+            'm' -> "ɯ"
+            'n' -> "n"
+            'o' -> "o"
+            'p' -> "d"
+            'q' -> "b"
+            'r' -> "ɹ"
+            's' -> "s"
+            't' -> "ʇ"
+            'u' -> "n"
+            'v' -> "ʌ"
+            'w' -> "ʍ"
+            'x' -> "x"
+            'y' -> "ʎ"
+            'z' -> "z"
+            else -> char.toString()
         }
     }
 
@@ -3058,8 +3166,7 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
         return fontItems.size
     }
 
-    class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        //val title: TextView = itemView.findViewById(R.id.titleTV)
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val description: TextView = itemView.findViewById(R.id.descriptionTV)
         val cardView: CardView = itemView.findViewById(R.id.card_view)
     }

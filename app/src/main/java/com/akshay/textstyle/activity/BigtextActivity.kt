@@ -14,6 +14,7 @@ import com.akshay.textstyle.databinding.ActivityBigtextBinding
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import java.util.*
 
 class BigtextActivity : AppCompatActivity() {
 
@@ -322,7 +323,7 @@ class BigtextActivity : AppCompatActivity() {
         })
 
         binding.generateBtnBig.setOnClickListener {
-            val text = editTxtMain.text.toString().toUpperCase()
+            val text = editTxtMain.text.toString().uppercase(Locale.getDefault())
 
             val charArray = text.toCharArray()
             val bigCharacters = mutableListOf<String>()
