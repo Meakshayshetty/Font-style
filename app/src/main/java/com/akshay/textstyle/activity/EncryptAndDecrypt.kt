@@ -40,7 +40,6 @@ class EncryptAndDecrypt : AppCompatActivity() {
 
         val adRequest = AdRequest.Builder().build()
         binding.adViewEncrypt.loadAd(adRequest)
-        binding.adView2Encrypt.loadAd(adRequest)
 
 
         InterstitialAd.load(this,getString(R.string.encrypt_screen_interstitial_uniid),adRequest, object : InterstitialAdLoadCallback() {

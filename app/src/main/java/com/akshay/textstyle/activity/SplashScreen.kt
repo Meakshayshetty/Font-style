@@ -2,12 +2,12 @@ package com.akshay.textstyle.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.akshay.textstyle.R
 
 @Suppress("DEPRECATION")
@@ -31,6 +31,6 @@ class SplashScreen : AppCompatActivity() {
             startActivity(i)
             // Close this activity
             finish()
-        }, 2000)
+        }, 1000)
     }
 }
