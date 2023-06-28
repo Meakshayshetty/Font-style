@@ -30,12 +30,12 @@ class FontFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_font, container, false)
 
         if (fontsItems.isEmpty()) {
-            repeat(67) {
+            repeat(89) {
                 fontsItems.add(Font())
             }
         } else {
             fontsItems.clear()
-            repeat(67) {
+            repeat(89) {
                 fontsItems.add(Font())
             }
         }

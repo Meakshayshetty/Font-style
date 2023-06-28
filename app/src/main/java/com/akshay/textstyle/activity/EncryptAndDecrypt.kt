@@ -84,14 +84,6 @@ class EncryptAndDecrypt : AppCompatActivity() {
                 }
             }
         })
-        /*Handler().postDelayed({
-            if(mInterstitialAd !=null){
-                mInterstitialAd?.show(this)
-            }else Log.e("error","ad null")
-        },8000)*/
-
-        //showInterstitialAdDelayed()
-
 
         binding.encryptBtn.setOnClickListener {
             val string = with(editTextMain){this?.text.toString()}

@@ -1097,6 +1097,270 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
                     charOne++
                 }
             }
+            67 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar31(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            68 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar32(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            69 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar33(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            70 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar34(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            71 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar35(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            72 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar36(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            73 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar37(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            74 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar38(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            75 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar39(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            76 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar40(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            77 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar41(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            78 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar42(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            79 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar43(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            80 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar44(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            81 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar45(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            82 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar46(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            83 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar47(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            84 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar48(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            85 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar49(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            86 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar50(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            87 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar51(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
+            88 -> {
+                var charOne = 0
+                val modifiedStrBld = StringBuilder()
+                while (charOne <= strBld.length - 1) {
+                    val a = strBld[charOne]
+                    val newCh = getFancyAlphabetChar52(a)
+                    modifiedStrBld.append(newCh)
+                    charOne++
+                }
+                strBld.clear()
+                strBld.append(modifiedStrBld)
+            }
         }
 
         f.setPreviewText(strBld.toString())
@@ -1107,6 +1371,709 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
 
             //displaying modified string in textView
             mainText.text = desStr
+        }
+    }
+    private fun getFancyAlphabetChar52(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ค"
+            'B' -> "๖"
+            'C' -> "¢"
+            'D' -> "໓"
+            'E' -> "ē"
+            'F' -> "f"
+            'G' -> "ງ"
+            'H' -> "h"
+            'I' -> "i"
+            'J' -> "ว"
+            'K' -> "k"
+            'L' -> "l"
+            'M' -> "๓"
+            'N' -> "ຖ"
+            'O' -> "໐"
+            'P' -> "p"
+            'Q' -> "๑"
+            'R' -> "r"
+            'S' -> "Ş"
+            'T' -> "t"
+            'U' -> "น"
+            'V' -> "ง"
+            'W' -> "ຟ"
+            'X' -> "x"
+            'Y' -> "ฯ"
+            'Z' -> "ຊ"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar51(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ค"
+            'B' -> "𝔟"
+            'C' -> "ⓒ"
+            'D' -> "𝐝"
+            'E' -> "є"
+            'F' -> "𝕗"
+            'G' -> "Ꮆ"
+            'H' -> "𝕙"
+            'I' -> "丨"
+            'J' -> "𝒿"
+            'K' -> "ᛕ"
+            'L' -> "𝓛"
+            'M' -> "Μ"
+            'N' -> "Ⓝ"
+            'O' -> "ㄖ"
+            'P' -> "ᑭ"
+            'Q' -> "𝓺"
+            'R' -> "Ř"
+            'S' -> "ร"
+            'T' -> "ｔ"
+            'U' -> "𝕦"
+            'V' -> "V"
+            'W' -> "𝐖"
+            'X' -> "Ж"
+            'Y' -> "𝓎"
+            'Z' -> "Ƶ"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar50(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "𝒶"
+            'B' -> "𝒷"
+            'C' -> "𝒸"
+            'D' -> "𝒹"
+            'E' -> "𝑒"
+            'F' -> "𝒻"
+            'G' -> "𝑔"
+            'H' -> "𝒽"
+            'I' -> "𝒾"
+            'J' -> "𝒿"
+            'K' -> "𝓀"
+            'L' -> "𝓁"
+            'M' -> "𝓂"
+            'N' -> "𝓃"
+            'O' -> "🏵"
+            'P' -> "𝓅"
+            'Q' -> "𝓆"
+            'R' -> "𝓇"
+            'S' -> "𝓈"
+            'T' -> "𝓉"
+            'U' -> "𝓊"
+            'V' -> "𝓋"
+            'W' -> "𝓌"
+            'X' -> "𝓍"
+            'Y' -> "𝓎"
+            'Z' -> "𝓏"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar49(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ค"
+            'B' -> "ც"
+            'C' -> "८"
+            'D' -> "ძ"
+            'E' -> "૯"
+            'F' -> "Բ"
+            'G' -> "૭"
+            'H' -> "Һ"
+            'I' -> "ɿ"
+            'J' -> "ʆ"
+            'K' -> "қ"
+            'L' -> "Ն"
+            'M' -> "ɱ"
+            'N' -> "Ո"
+            'O' -> "૦"
+            'P' -> "ƿ"
+            'Q' -> "ҩ"
+            'R' -> "Ր"
+            'S' -> "ς"
+            'T' -> "੮"
+            'U' -> "υ"
+            'V' -> "౮"
+            'W' -> "ω"
+            'X' -> "૪"
+            'Y' -> "ע"
+            'Z' -> "ઽ"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar48(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "𝕒"
+            'B' -> "Ⓑ"
+            'C' -> "ᶜ"
+            'D' -> "∂"
+            'E' -> "𝔢"
+            'F' -> "Ƒ"
+            'G' -> "𝔤"
+            'H' -> "н"
+            'I' -> "ι"
+            'J' -> "𝓳"
+            'K' -> "𝓴"
+            'L' -> "ㄥ"
+            'M' -> "𝓂"
+            'N' -> "ᑎ"
+            'O' -> "𝕠"
+            'P' -> "ᑭ"
+            'Q' -> "𝕢"
+            'R' -> "ℝ"
+            'S' -> "丂"
+            'T' -> "t"
+            'U' -> "ᑌ"
+            'V' -> "Ѷ"
+            'W' -> "ฬ"
+            'X' -> "א"
+            'Y' -> "𝐲"
+            'Z' -> "𝕫"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar47(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "𝒶"
+            'B' -> "𝒷"
+            'C' -> "ｃ"
+            'D' -> "𝔻"
+            'E' -> "ｅ"
+            'F' -> "𝔽"
+            'G' -> "Ꮆ"
+            'H' -> "ᕼ"
+            'I' -> "丨"
+            'J' -> "𝓙"
+            'K' -> "Ⓚ"
+            'L' -> "𝕝"
+            'M' -> "๓"
+            'N' -> "𝔫"
+            'O' -> "𝔬"
+            'P' -> "Ƥ"
+            'Q' -> "Ǫ"
+            'R' -> "ℝ"
+            'S' -> "ѕ"
+            'T' -> "t"
+            'U' -> "𝐮"
+            'V' -> "𝐯"
+            'W' -> "𝔴"
+            'X' -> "𝔵"
+            'Y' -> "𝐲"
+            'Z' -> "𝕫"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar46(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "Ａ"
+            'B' -> "乃"
+            'C' -> "𝓒"
+            'D' -> "𝓓"
+            'E' -> "є"
+            'F' -> "ｆ"
+            'G' -> "𝓰"
+            'H' -> "н"
+            'I' -> "ι"
+            'J' -> "ן"
+            'K' -> "ｋ"
+            'L' -> "𝕝"
+            'M' -> "Ｍ"
+            'N' -> "ᶰ"
+            'O' -> "𝓞"
+            'P' -> "Ƥ"
+            'Q' -> "Ǫ"
+            'R' -> "ʳ"
+            'S' -> "Ｓ"
+            'T' -> "t"
+            'U' -> "𝐔"
+            'V' -> "𝓥"
+            'W' -> "𝓦"
+            'X' -> "𝕏"
+            'Y' -> "¥"
+            'Z' -> "Ż"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar45(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ค"
+            'B' -> "𝓑"
+            'C' -> "ς"
+            'D' -> "𝓓"
+            'E' -> "𝒆"
+            'F' -> "ᶠ"
+            'G' -> "ⓖ"
+            'H' -> "𝒽"
+            'I' -> "ｉ"
+            'J' -> "ן"
+            'K' -> "Ќ"
+            'L' -> "l"
+            'M' -> "м"
+            'N' -> "𝕟"
+            'O' -> "𝐨"
+            'P' -> "ᵖ"
+            'Q' -> "Ǫ"
+            'R' -> "ⓡ"
+            'S' -> "𝐒"
+            'T' -> "丅"
+            'U' -> "ย"
+            'V' -> "ש"
+            'W' -> "ⓦ"
+            'X' -> "𝐗"
+            'Y' -> "ү"
+            'Z' -> "ᶻ"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar44(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "卂"
+            'B' -> "в"
+            'C' -> "ς"
+            'D' -> "𝔡"
+            'E' -> "Ẹ"
+            'F' -> "ⓕ"
+            'G' -> "Ǥ"
+            'H' -> "𝔥"
+            'I' -> "𝒾"
+            'J' -> "ן"
+            'K' -> "𝐤"
+            'L' -> "𝕃"
+            'M' -> "𝓂"
+            'N' -> "Ⓝ"
+            'O' -> "𝕆"
+            'P' -> "ℙ"
+            'Q' -> "q"
+            'R' -> "尺"
+            'S' -> "ⓢ"
+            'T' -> "т"
+            'U' -> "𝐮"
+            'V' -> "𝓥"
+            'W' -> "𝓌"
+            'X' -> "ⓧ"
+            'Y' -> "у"
+            'Z' -> "𝐳"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar43(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "Ａ"
+            'B' -> "𝕓"
+            'C' -> "ς"
+            'D' -> "𝒹"
+            'E' -> "ᵉ"
+            'F' -> "ℱ"
+            'G' -> "𝐆"
+            'H' -> "Ⓗ"
+            'I' -> "𝕚"
+            'J' -> "ј"
+            'K' -> "𝓀"
+            'L' -> "ℓ"
+            'M' -> "𝓂"
+            'N' -> "𝓝"
+            'O' -> "𝔬"
+            'P' -> "Ƥ"
+            'Q' -> "Ǫ"
+            'R' -> "尺"
+            'S' -> "𝓈"
+            'T' -> "ｔ"
+            'U' -> "𝓊"
+            'V' -> "𝐕"
+            'W' -> "𝔀"
+            'X' -> "Ｘ"
+            'Y' -> "Ⓨ"
+            'Z' -> "z"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar42(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ค"
+            'B' -> "𝔟"
+            'C' -> "℃"
+            'D' -> "𝔻"
+            'E' -> "Ｅ"
+            'F' -> "Ⓕ"
+            'G' -> "𝔾"
+            'H' -> "ｈ"
+            'I' -> "ι"
+            'J' -> "ʲ"
+            'K' -> "Ｋ"
+            'L' -> "Ｌ"
+            'M' -> "м"
+            'N' -> "Ⓝ"
+            'O' -> "ό"
+            'P' -> "Ⓟ"
+            'Q' -> "ᵠ"
+            'R' -> "Ř"
+            'S' -> "ร"
+            'T' -> "𝔱"
+            'U' -> "𝕦"
+            'V' -> "𝓋"
+            'W' -> "ｗ"
+            'X' -> "𝕩"
+            'Y' -> "ʸ"
+            'Z' -> "ｚ"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar41(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "卂"
+            'B' -> "β"
+            'C' -> "𝕔"
+            'D' -> "𝔻"
+            'E' -> "є"
+            'F' -> "ｆ"
+            'G' -> "𝑔"
+            'H' -> "Ħ"
+            'I' -> "ｉ"
+            'J' -> "ⓙ"
+            'K' -> "ᵏ"
+            'L' -> "Ⓛ"
+            'M' -> "𝓂"
+            'N' -> "ℕ"
+            'O' -> "𝕆"
+            'P' -> "𝐩"
+            'Q' -> "ℚ"
+            'R' -> "ℝ"
+            'S' -> "s"
+            'T' -> "ᵗ"
+            'U' -> "ᵘ"
+            'V' -> "V"
+            'W' -> "ฬ"
+            'X' -> "χ"
+            'Y' -> "ץ"
+            'Z' -> "𝕫"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar40(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ａ"
+            'B' -> "๒"
+            'C' -> "𝐜"
+            'D' -> "๔"
+            'E' -> "𝐞"
+            'F' -> "Ｆ"
+            'G' -> "Ⓖ"
+            'H' -> "н"
+            'I' -> "ί"
+            'J' -> "𝐣"
+            'K' -> "Ｋ"
+            'L' -> "Ł"
+            'M' -> "ｍ"
+            'N' -> "ᑎ"
+            'O' -> "Ø"
+            'P' -> "𝓟"
+            'Q' -> "𝓆"
+            'R' -> "𝐑"
+            'S' -> "ⓢ"
+            'T' -> "𝐭"
+            'U' -> "Ｕ"
+            'V' -> "𝓥"
+            'W' -> "𝐰"
+            'X' -> "𝔁"
+            'Y' -> "𝓨"
+            'Z' -> "z"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar39(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "𝕒"
+            'B' -> "𝕓"
+            'C' -> "匚"
+            'D' -> "đ"
+            'E' -> "Ẹ"
+            'F' -> "𝐅"
+            'G' -> "𝕘"
+            'H' -> "𝓱"
+            'I' -> "𝓲"
+            'J' -> "נ"
+            'K' -> "ķ"
+            'L' -> "𝓛"
+            'M' -> "Ⓜ"
+            'N' -> "ℕ"
+            'O' -> "𝑜"
+            'P' -> "卩"
+            'Q' -> "ⓠ"
+            'R' -> "ｒ"
+            'S' -> "ｓ"
+            'T' -> "𝐭"
+            'U' -> "𝕌"
+            'V' -> "ש"
+            'W' -> "ⓦ"
+            'X' -> "Ж"
+            'Y' -> "Ⓨ"
+            'Z' -> "ž"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar38(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ά"
+            'B' -> "Ｂ"
+            'C' -> "ᶜ"
+            'D' -> "𝐃"
+            'E' -> "𝕖"
+            'F' -> "Ｆ"
+            'G' -> "𝓰"
+            'H' -> "ℍ"
+            'I' -> "𝕚"
+            'J' -> "Ｊ"
+            'K' -> "Ｋ"
+            'L' -> "ℓ"
+            'M' -> "м"
+            'N' -> "𝔫"
+            'O' -> "Ｏ"
+            'P' -> "𝔭"
+            'Q' -> "𝐐"
+            'R' -> "Ř"
+            'S' -> "ร"
+            'T' -> "ｔ"
+            'U' -> "υ"
+            'V' -> "Ｖ"
+            'W' -> "𝓌"
+            'X' -> "Ж"
+            'Y' -> "¥"
+            'Z' -> "𝓩"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar37(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "卂"
+            'B' -> "𝔟"
+            'C' -> "¢"
+            'D' -> "𝕕"
+            'E' -> "Ⓔ"
+            'F' -> "ｆ"
+            'G' -> "𝔤"
+            'H' -> "𝔥"
+            'I' -> "ᶤ"
+            'J' -> "ڶ"
+            'K' -> "ķ"
+            'L' -> "𝔩"
+            'M' -> "Ⓜ"
+            'N' -> "Ň"
+            'O' -> "ᗝ"
+            'P' -> "𝔭"
+            'Q' -> "𝓠"
+            'R' -> "𝓡"
+            'S' -> "ｓ"
+            'T' -> "ｔ"
+            'U' -> "𝕌"
+            'V' -> "ש"
+            'W' -> "ⓦ"
+            'X' -> "Ⓧ"
+            'Y' -> "𝓎"
+            'Z' -> "𝐳"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar36(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ᵃ"
+            'B' -> "𝓑"
+            'C' -> "𝓬"
+            'D' -> "Ⓓ"
+            'E' -> "€"
+            'F' -> "Ｆ"
+            'G' -> "𝓰"
+            'H' -> "𝐡"
+            'I' -> "ⓘ"
+            'J' -> "𝓙"
+            'K' -> "ｋ"
+            'L' -> "ｌ"
+            'M' -> "๓"
+            'N' -> "𝓃"
+            'O' -> "ㄖ"
+            'P' -> "𝓟"
+            'Q' -> "ᵠ"
+            'R' -> "𝓡"
+            'S' -> "ⓢ"
+            'T' -> "丅"
+            'U' -> "𝓊"
+            'V' -> "𝓿"
+            'W' -> "ω"
+            'X' -> "Ж"
+            'Y' -> "𝕪"
+            'Z' -> "ž"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar35(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ⓐ"
+            'B' -> "в"
+            'C' -> "¢"
+            'D' -> "๔"
+            'E' -> "𝐄"
+            'F' -> "千"
+            'G' -> "g"
+            'H' -> "ⓗ"
+            'I' -> "𝓘"
+            'J' -> "ڶ"
+            'K' -> "к"
+            'L' -> "𝔩"
+            'M' -> "𝓜"
+            'N' -> "ภ"
+            'O' -> "ⓞ"
+            'P' -> "𝓹"
+            'Q' -> "ｑ"
+            'R' -> "𝓡"
+            'S' -> "ˢ"
+            'T' -> "ᵗ"
+            'U' -> "𝓊"
+            'V' -> "𝐕"
+            'W' -> "Ｗ"
+            'X' -> "𝕩"
+            'Y' -> "ㄚ"
+            'Z' -> "ž"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar34(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ά"
+            'B' -> "ⓑ"
+            'C' -> "Ć"
+            'D' -> "๔"
+            'E' -> "Ｅ"
+            'F' -> "ℱ"
+            'G' -> "ｇ"
+            'H' -> "ⓗ"
+            'I' -> "丨"
+            'J' -> "ן"
+            'K' -> "Ќ"
+            'L' -> "Ｌ"
+            'M' -> "Μ"
+            'N' -> "𝐧"
+            'O' -> "Ỗ"
+            'P' -> "ᵖ"
+            'Q' -> "𝕢"
+            'R' -> "ʳ"
+            'S' -> "𝐒"
+            'T' -> "т"
+            'U' -> "𝐔"
+            'V' -> "ν"
+            'W' -> "ω"
+            'X' -> "Ж"
+            'Y' -> "Ｙ"
+            'Z' -> "Ｚ"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar33(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "𝒶"
+            'B' -> "Ⓑ"
+            'C' -> "ᑕ"
+            'D' -> "𝐝"
+            'E' -> "ᵉ"
+            'F' -> "ᖴ"
+            'G' -> "𝐆"
+            'H' -> "𝕙"
+            'I' -> "𝓘"
+            'J' -> "ⓙ"
+            'K' -> "ⓚ"
+            'L' -> "𝐋"
+            'M' -> "ｍ"
+            'N' -> "几"
+            'O' -> "ｏ"
+            'P' -> "ｐ"
+            'Q' -> "Ɋ"
+            'R' -> "尺"
+            'S' -> "ᔕ"
+            'T' -> "𝕥"
+            'U' -> "υ"
+            'V' -> "𝓋"
+            'W' -> "ᗯ"
+            'X' -> "𝓧"
+            'Y' -> "Ｙ"
+            'Z' -> "𝐙"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar32(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "ₐ"
+            'B' -> "b"
+            'C' -> "c"
+            'D' -> "d"
+            'E' -> "ₑ"
+            'F' -> "f"
+            'G' -> "g"
+            'H' -> "ₕ"
+            'I' -> "ᵢ"
+            'J' -> "ⱼ"
+            'K' -> "ₖ"
+            'L' -> "ₗ"
+            'M' -> "ₘ"
+            'N' -> "ₙ"
+            'O' -> "ₒ"
+            'P' -> "ₚ"
+            'Q' -> "q"
+            'R' -> "ᵣ"
+            'S' -> "ₛ"
+            'T' -> "ₜ"
+            'U' -> "ᵤ"
+            'V' -> "ᵥ"
+            'W' -> "w"
+            'X' -> "ₓ"
+            'Y' -> "y"
+            'Z' -> "z"
+            else -> char.toString()
+        }
+    }
+
+    private fun getFancyAlphabetChar31(char: Char): String {
+        return when (char.uppercaseChar()) {
+            'A' -> "𝐀"
+            'B' -> "๒"
+            'C' -> "Ć"
+            'D' -> "𝓭"
+            'E' -> "𝑒"
+            'F' -> "ⓕ"
+            'G' -> "𝕘"
+            'H' -> "𝓱"
+            'I' -> "Ɨ"
+            'J' -> "Ｊ"
+            'K' -> "Ⓚ"
+            'L' -> "ᒪ"
+            'M' -> "м"
+            'N' -> "𝐍"
+            'O' -> "Ø"
+            'P' -> "卩"
+            'Q' -> "q"
+            'R' -> "я"
+            'S' -> "丂"
+            'T' -> "𝐓"
+            'U' -> "ย"
+            'V' -> "ｖ"
+            'W' -> "𝔀"
+            'X' -> "x"
+            'Y' -> "𝔂"
+            'Z' -> "𝓩"
+            else -> char.toString()
         }
     }
 
