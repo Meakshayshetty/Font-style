@@ -103,13 +103,6 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
-        showInterstitialAdDelayed()
-        /*     Handler().postDelayed({
-                 if(mInterstitialAd !=null){
-                     mInterstitialAd?.show(this)
-                 }else Log.e("error","ad null")
-             },5000)*/
-
         tabLayout = binding.tabLayout
         editText =binding.editTextMain
         mainText = binding.mainText
@@ -121,8 +114,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.mainBtn.setOnClickListener {
-                val copyText = binding.mainText.text.toString()
-                saveToClipboard(copyText)
+            showInterstitialAdDelayed()
+            val copyText = binding.mainText.text.toString()
+            saveToClipboard(copyText)
         }
     }
 

@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="brown">#979292</color>
     <color name="app_base_color">#263238</color>
+    <color name="copy_icon_color">#4A65FB</color>
+
 </resources>

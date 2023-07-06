@@ -258,8 +258,6 @@ class BigtextActivity : AppCompatActivity() {
     private var mInterstitialAd: InterstitialAd?=null
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityBigtextBinding.inflate(layoutInflater)
@@ -336,9 +334,6 @@ class BigtextActivity : AppCompatActivity() {
 
             val bigAlphabetText = bigCharacters.joinToString("\n")
             mainText.text = bigAlphabetText
-            /*val bigText = getBigAlphabet('A')
-            val bigAlphabetText = bigText.joinToString("\n")
-            mainText.text = bigAlphabetText*/
         }
 
 

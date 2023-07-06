@@ -4,20 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.127" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/application_logo_background.xml" value="0.1385" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/blink_animation.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/btn.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/custom_button.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/custom_button_clicked.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/custom_button_white.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/custom_edit_text_rounded.xml" value="0.127" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/done.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/dotted.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/dotted_layer.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/ic_launcher_background.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/drawable/logo_background.xml" value="0.127" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout-v23/adapter_quickchat.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/activity_bigtext.xml" value="0.1778537836682343" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/activity_color_and_size.xml" value="0.16" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/activity_encrypt_and_decrypt.xml" value="0.1778537836682343" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/activity_main.xml" value="0.1778537836682343" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/activity_main_screen.xml" value="0.16" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/activity_splash_screen.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/activity_text_repater.xml" value="0.1778537836682343" />
@@ -28,6 +31,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/adapter_font.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/adapter_maths_symbol.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/adapter_numeral.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/adapter_quickchat.xml" value="0.1778537836682343" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/adapter_random_icons.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/adapter_star.xml" value="0.357421875" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/fragment_alphabet.xml" value="0.21666666666666667" />
@@ -39,6 +43,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/fragment_numeral_symbols.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/fragment_random_icon.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/layout/fragment_star.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/mipmap-anydpi-v26/application_logo.xml" value="0.1385" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/mipmap-anydpi-v26/logo.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/mipmap-anydpi-v26/logo_round.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Textstyle/app/src/main/res/mipmap-anydpi-v26/splash_screen_logo_round.xml" value="0.127" />

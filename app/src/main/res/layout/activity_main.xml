@@ -97,14 +97,18 @@
             android:layout_height="wrap_content"
             android:background="@color/white"/>
 
-        <ImageButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/mainBtn"
-            android:background="@color/white"
-            android:src="@drawable/copy_icon"
+            app:tint="@color/white"
+            android:backgroundTint="@color/app_base_color"
+            android:src="@drawable/done"
             android:layout_margin="25dp"
             android:layout_gravity="bottom|end"
+            app:elevation="6dp"
+            app:pressedTranslationZ="15dp"
+            app:borderWidth="0dp"
             />
         <!--app:backgroundTint="@color/app_base_color"-->
 <!--
