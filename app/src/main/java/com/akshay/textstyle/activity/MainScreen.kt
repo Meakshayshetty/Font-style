@@ -1,136 +1,77 @@
 package com.akshay.textstyle.activity
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.akshay.textstyle.adapter.QuickChatAdapter
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.akshay.textstyle.databinding.ActivityMainScreenBinding
+import com.akshay.textstyle.model.Quote
+import com.akshay.textstyle.network.ApiClient
+import com.akshay.textstyle.network.QuoteApi
+import com.akshay.textstyle.notification.QuoteNotificationWorker
+import com.akshay.textstyle.utils.Constants
+import com.akshay.textstyle.utils.Network
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.concurrent.TimeUnit
 
 class MainScreen : AppCompatActivity() {
 
-    private val icons: ArrayList<String> = arrayListOf(
-        "𝓱𝓪𝓱𝓪𝓱𝓪𝓱𝓪",
-        "♡•𝓱𝓮𝓵𝓵𝓸•♡",
-        "✿✧✰Ꮋᵉ𝑙𝑙ᵒ✰✧✿",
-        "Ꭵ°᭄ᶫᵒᵛᵉᵧₒᵤ࿐♥",
-        "🅷🅰🅷🅰🅷🅰🅷🅰",
-        "Ꭵ ᭄ᶫᵒᵛᵉ☠︎︎ᵧₒᵤ࿐♥",
-        "🇮  🇱 🇴 🇻 🇪  🇾 🇴 🇺  ♥️",
-        "🌟ƓⰙⰙƊ 𐒄ⰙⱤƝƖƝƓ🌟",
-        "𝓰𝓸𝓸𝓭 𝓷𝓲𝓰𝓱𝓽💕",
-        "💢☣G͢o͢o͢d͢ M͢o͢r͢n͢i͢n͢g͢☣💢",
-        "☛♥️♦ǤØØĐ ΜØŘŇƗŇ♦♥️☚",
-        "🧡😇Gₒₒd ₘₒᵣₙᵢₙg😇🧡",
-        "●🔷❤G͟o͟o͟d͟ ͟M͟o͟r͟n͟i͟n͟g͟ ͟ ❤️🔷●",
-        "◥꧁ད 𝕘Ｏ𝕠Ⓓ ⓜσ𝐑𝕟ƗภᎶ ཌ꧂◤",
-        "💋★❍★❍Ꮹoo₫ ₥oԻӣ♙ӣᏩ ❍★❍💋",
-        "🦋🌺♢ 𝐆Ỗⓞ∂ 𝐌ᵒℝⓃίⓝg 🌺🦋",
-        "🌞🌻♜◀̶G̶o̶o̶d̶ ̶M̶o̶r̶n̶i̶n̶g̶▶♜️🌻🌞",
-        "★彡 Gσσԃ Mσɾɳιɳɠ 彡★",
-        "❤️❀♰♛₲ØØĐ ₥ØⱤ₦ł₦₲ ♛♰❀❤️",
-        "🌞❂𐂷 ƓⰙⰙƊ 𐒄ⰙⱤƝƖƝƓ 𐂷❂🌞",
-        "꧁🥀ᎶᎾᎾⅅ ℳᎾℛℕℐℕᎶ 🥀꧂",
-        "♥ﮩ٨ـﮩﮩ٨ـﮩﮩ gσσ∂♡мσяηιηg ﮩﮩـ٨ﮩﮩـ٨ﮩ♥",
-        "🦚😍Ğ𝐎𝐎∂ ϻ𝐎𝕣ⓝ𝕀ⓝ𝑔😍🦚",
-        "❀💋 GOOᗪ ᗰOᖇᑎIᑎG 💋❀",
-        "⚔️ 🔥𝔾𝕠𝕠𝕕 𝕄𝕠𝕣𝕟𝕚𝕟🔥 ⚔️",
-        "G͛⦚o͛⦚o͛⦚d͛⦚ M͛⦚o͛⦚r͛⦚n͛⦚i͛⦚n͛⦚g͛⦚",
-        "❤️💙💚ĞŐŐĎ МŐŔŃĨŃ❤️💙💚",
-        "💙▇☆₲ØØĐ ₥ØⱤ₦ł₦☆▇💙",
-        "ıllıllı 🍄🌅Ğ𝕠σ𝔡 𝕞𝓸𝕣ภ𝕚ｎ🌅🍄 ıllıllı",
-        "█▓▒▒░░░Good morning░░░▒▒▓█",
-        "✩░▒▓▆▅▃▂▁\uD835\uDC06\uD835\uDC28\uD835\uDC28\uD835\uDC1D \uD835\uDC26\uD835\uDC28\uD835\uDC2B\uD835\uDC27\uD835\uDC22\uD835\uDC27\uD835\uDC20▁▂▃▅▆▓▒░✩",
-        "✴.·´¯`·.·★  \uD83C\uDF80\uD835\uDCD6\uD835\uDCF8\uD835\uDCF8\uD835\uDCED \uD835\uDCF6\uD835\uDCF8\uD835\uDCFB\uD835\uDCF7\uD835\uDCF2\uD835\uDCF7\uD835\uDCF0\uD83C\uDF80  ★·.·`¯´·.✴",
-        "❚█══Good morning══█❚",
-        "\uD835\uDD72\uD835\uDD94\uD835\uDD94\uD835\uDD89 \uD835\uDD92\uD835\uDD94\uD835\uDD97\uD835\uDD93\uD835\uDD8E\uD835\uDD93\uD835\uDD8C✍",
-        "\uD83D\uDE0D\uD83D\uDC9E\uD83D\uDC98 \uD835\uDCD6\uD835\uDCF8\uD835\uDCF8\uD835\uDCED \uD835\uDCF6\uD835\uDCF8\uD835\uDCFB\uD835\uDCF7\uD835\uDCF2\uD835\uDCF7\uD835\uDCF0 \uD83D\uDC94\uD83D\uDC8F\uD83D\uDC96",
-        "∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼⒼⓞⓞⓓ ⓜⓞⓡⓝⓘⓝⓖᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙",
-        "¸¸♬·¯·♪·¯·♫¸¸ \uD835\uDCD6\uD835\uDCF8\uD835\uDCF8\uD835\uDCED \uD835\uDCF6\uD835\uDCF8\uD835\uDCFB\uD835\uDCF7\uD835\uDCF2\uD835\uDCF7\uD835\uDCF0¸¸♫·¯·♪¸♩·¯·♬¸¸",
-        "\uD83C\uDF53\uD83D\uDC7A  \uD835\uDD24Ｏόđ м\uD835\uDD60\uD835\uDC2Bภιⓝ\uD835\uDCD6  \uD83D\uDC09\uD83D\uDC3B\n",
-        "ミミ◦❧◦°˚°◦.¸¸◦°´❤*•.¸♥ Good night ♥¸.•*❤´°◦¸¸.◦°˚°◦☙◦彡彡",
-        "◦•●❤♡ Good night ♡❤●•◦",
-        "𝖌𝖔𝖔𝖉𝖓𝖎𝖌𝖍𝖙 🔪",
-        "Gud nyt 🌃💤😴",
-        "♡✨ǤØØĐ ŇƗǤĦŦ✨♡",
-        "✨\uD835\uDD3E\uD835\uDD60\uD835\uDD60\uD835\uDD55 ℕ\uD835\uDD5A\uD835\uDD58\uD835\uDD59\uD835\uDD65 ☽⋆✨",
-        "━╬٨ـﮩ\uD834\uDD1E⃝\uD835\uDCD1\uD835\uDCEA\uD835\uDCEB\uD835\uDD02✿ﮩﮩـ╬━༺❤️❥❥✯",
-        "Night ❤️\uD83D\uDC95\uD83E\uDD70",
-        "ミ\uD83D\uDC96 Good night \uD83D\uDC96彡",
-        "ɢȏȏԀ ṅıɢһṭ",
-        "❀\uD83D\uDC8B GOOᗪ ᑎIGᕼT \uD83D\uDC8B❀",
-        "\uD83C\uDF38ꗥ～ꗥ\uD83C\uDF38 \uD835\uDC06\uD835\uDC28\uD835\uDC28\uD835\uDC1D \uD835\uDC27\uD835\uDC22\uD835\uDC20\uD835\uDC21\uD835\uDC2D \uD83C\uDF38ꗥ～ꗥ\uD83C\uDF38",
-        "꧁༺ \uD835\uDCD6\uD835\uDCF8\uD835\uDCF8\uD835\uDCED \uD835\uDCF7\uD835\uDCF2\uD835\uDCF0\uD835\uDCF1\uD835\uDCFD ༻꧂",
-        "" +
-                "꧁•⊹٭Good night٭⊹•꧂",
-        "❡✺✺ᖱ ℵ!❡ℏт",
-        "✿༺ \uD835\uDCA2\uD835\uDC5C\uD835\uDC5C\uD835\uDCB9 \uD835\uDCC3\uD835\uDCBE\uD835\uDC54\uD835\uDCBD\uD835\uDCC9 ༻✿",
-        "ꁅꂦꂦꀸ ꈤꀤꁅꃅƬ",
-        "꧁༺ \uD835\uDCD6\uD835\uDCF8\uD835\uDCF8\uD835\uDCED \uD835\uDCF6\uD835\uDCF8\uD835\uDCFB\uD835\uDCF7\uD835\uDCF2\uD835\uDCF7\uD835\uDCF0 ༻꧂",
-        "ⲯ﹍︿﹍︿﹍ \uD835\uDE76\uD835\uDE98\uD835\uDE98\uD835\uDE8D \uD835\uDE96\uD835\uDE98\uD835\uDE9B\uD835\uDE97\uD835\uDE92\uD835\uDE97\uD835\uDE90 ﹍ⲯ﹍ⲯ﹍︿﹍☼",
-        "ミ\uD83D\uDC96 Good morning \uD83D\uDC96彡",
-        "ミ\uD83D\uDC96 Love you \uD83D\uDC96彡",
-        "✿༺ \uD835\uDC3F\uD835\uDC5C\uD835\uDCCB\uD835\uDC52 \uD835\uDCCE\uD835\uDC5C\uD835\uDCCA ༻✿",
-        "෴❤️෴ ෴❤️෴ Love you ෴❤️෴ ෴❤️෴",
-        "ℓ✺ṽḙ ⑂✺ṳ",
-        "◦•●❤♡ Love you ♡❤●•◦",
-        "꧁༺ \uD835\uDCDB\uD835\uDCF8\uD835\uDCFF\uD835\uDCEE \uD835\uDD02\uD835\uDCF8\uD835\uDCFE ༻꧂",
-        "❀\uD83D\uDC8B ᒪOᐯE YOᑌ \uD83D\uDC8B❀",
-        "\uD83C\uDF38ꗥ～ꗥ\uD83C\uDF38 \uD835\uDC1C\uD835\uDC28\uD835\uDC27\uD835\uDC20\uD835\uDC2B\uD835\uDC1A\uD835\uDC2D\uD835\uDC2E\uD835\uDC25\uD835\uDC1A\uD835\uDC2D\uD835\uDC22\uD835\uDC28\uD835\uDC27 \uD83C\uDF38ꗥ～ꗥ\uD83C\uDF38",
-        "❝\uD835\uDC1C\uD835\uDC28\uD835\uDC27\uD835\uDC20\uD835\uDC2B\uD835\uDC1A\uD835\uDC2D\uD835\uDC2E\uD835\uDC25\uD835\uDC1A\uD835\uDC2D\uD835\uDC22\uD835\uDC28\uD835\uDC27❞",
-        "\uD808\uDD9Cƈօռɢʀǟȶʊʟǟȶɨօռ \uD808\uDD9C",
-        "ミ\uD83D\uDC96 congratulation \uD83D\uDC96彡",
-        "❤꧁ღ⊱♥ congratulation ♥⊱ღ꧂❤",
-        "\uD835\uDE57\uD835\uDE56\uD835\uDE57\uD835\uDE57\uD835\uDE6E",
-        "꧁☠︎\uD83C\uDD7C\uD83C\uDD70\uD83C\uDD81\uD83C\uDD7B\uD83C\uDD71\uD83C\uDD70\uD83C\uDD71\uD83C\uDD88☠︎꧂,",
-        "..\uD835\uDC69\uD835\uDC82\uD835\uDC83\uD835\uDC9A..\uD835\uDC69\uD835\uDC90\uD835\uDC9A\uD83E\uDD40\uD83E\uDDF8",
-        "..\uD835\uDC69\uD835\uDC82\uD835\uDC83\uD835\uDC9A..\uD835\uDC69\uD835\uDC90\uD835\uDC9A\uD83E\uDD40\uD83E\uDDF8",
-        "\uD835\uDCD1\uD835\uDCEA\uD835\uDCEB\uD835\uDD02",
-        "ʙᴀʙʏ ღ",
-        "⇶✴☞\uD835\uDE3D\uD835\uDCEAḅ\uD835\uDCCE❈",
-        "My \uD835\uDCD1\uD835\uDCEA\uD835\uDCEB\uD835\uDD02",
-        "\uD835\uDC70 \uD835\uDC73\uD835\uDC76\uD835\uDC7D\uD835\uDC6C \uD835\uDC80\uD835\uDC76\uD835\uDC7C❤️✨",
-        "I love you & sorry -sorry",
-        "♡☽ \uD835\uDD26 \uD835\uDD29\uD835\uDD2C\uD835\uDD33\uD835\uDD22 \uD835\uDD36\uD835\uDD2C\uD835\uDD32.☺︎✧"
-    )
-
+    var binding :ActivityMainScreenBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = ActivityMainScreenBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)
 
         MobileAds.initialize(this)
         val request = AdRequest.Builder().build()
-        binding.adViewMainscreen.loadAd(request)
+        binding!!.adViewMainscreen.loadAd(request)
 
-        binding.bigTextBtn.setOnClickListener {
+
+        scheduleDailyQuoteNotification()
+
+        checkAndShowSnackbar()
+
+
+
+        binding!!.quotesBtn.setOnClickListener {
+            val i = Intent(this@MainScreen, Quotes::class.java)
+            startActivity(i)
+        }
+
+        binding!!.quickStylesBtn.setOnClickListener {
+            val i = Intent(this@MainScreen, QuickStyles::class.java)
+            startActivity(i)
+        }
+
+        binding!!.bigTextBtn.setOnClickListener {
             val i = Intent(this@MainScreen, BigtextActivity::class.java)
             startActivity(i)
         }
 
-        binding.createTextBtn.setOnClickListener {
+        binding!!.createTextBtn.setOnClickListener {
             val i = Intent(this@MainScreen, MainActivity::class.java)
             startActivity(i)
         }
 
-        binding.encryptAndDecryptBtn.setOnClickListener {
+        binding!!.encryptAndDecryptBtn.setOnClickListener {
             val i = Intent(this@MainScreen, EncryptAndDecrypt::class.java)
             startActivity(i)
         }
 
-        binding.textRepeaterBtn.setOnClickListener {
+        binding!!.textRepeaterBtn.setOnClickListener {
             val i = Intent(this@MainScreen, TextRepeater::class.java)
             startActivity(i)
         }
-        binding.btnShare.setOnClickListener {
+        binding!!.btnShare.setOnClickListener {
             val sharingIntent = Intent(Intent.ACTION_SEND)
 
             sharingIntent.type = "text/plain"
@@ -144,21 +85,19 @@ class MainScreen : AppCompatActivity() {
 
             sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
             startActivity(Intent.createChooser(sharingIntent, "Share using"))
-
         }
 
-        val recyclerView: RecyclerView = binding.rvQuickChat
-        val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
-
-        val adapter = QuickChatAdapter(icons) { selectedString ->
-            // Handle the selected icon
-            saveToClipboard(selectedString)
-
+        binding!!.cvQuote.setOnClickListener {
+            val textData = "${binding!!.tvQuotes.text}      \n \n ${binding!!.tvAuthor.text}"
+            val intent = Intent(this, DoneScreen::class.java)
+            intent.putExtra("textDataKey", textData)
+            startActivity(intent)
         }
-        recyclerView.adapter = adapter
+
+        randomQuote()
     }
 
+/*
     private fun saveToClipboard(desStr: String) {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("simple text", desStr)
@@ -170,4 +109,61 @@ class MainScreen : AppCompatActivity() {
             Toast.LENGTH_SHORT
         ).show()
     }
+*/
+
+    private fun scheduleDailyQuoteNotification() {
+
+        val uniqueWorkName = "QuoteNotification"
+        val request = PeriodicWorkRequestBuilder<QuoteNotificationWorker>(
+            1, TimeUnit.DAYS
+        )
+            .build()
+
+        val workManager = WorkManager.getInstance(applicationContext)
+        val workInfo = workManager.getWorkInfosForUniqueWork(uniqueWorkName).get()
+
+        if (workInfo.isNullOrEmpty()) {
+
+            workManager.enqueueUniquePeriodicWork(
+                uniqueWorkName,
+                ExistingPeriodicWorkPolicy.KEEP,
+                request
+            )
+        }
+    }
+    private fun randomQuote(){
+        val apiService = ApiClient.retrofit(Constants.BASE_URL_ZEN_QUOTES).create(QuoteApi::class.java)
+        val call = apiService.getRandomQuotes()
+        call.enqueue(object : Callback<List<Quote>> {
+            @SuppressLint("SetTextI18n")
+            override fun onResponse(call: Call<List<Quote>>, response: Response<List<Quote>>) {
+                if (response.isSuccessful) {
+                    val quotes = response.body()
+                    if (!quotes.isNullOrEmpty()) {
+                        binding!!.tvQuotes.text = quotes[0].q
+                        binding!!.tvAuthor.text = "- ${quotes[0].a}"
+                        binding!!.pbMainQuote.visibility = View.INVISIBLE
+
+                        // Use the quoteText and author in your app
+                    }
+                } else {
+                    // Handle unsuccessful response
+                }
+            }
+
+            override fun onFailure(call: Call<List<Quote>>, t: Throwable) {
+                // Handle network failure
+            }
+        })
+    }
+
+    private fun checkAndShowSnackbar() {
+        if (!Network.isNetworkAvailable(this)) {
+            Network.showNoInternetSnackbar(
+                binding!!.mainScreenRoot, // Replace with your root layout ID
+                this
+            )
+        }
+    }
+
 }

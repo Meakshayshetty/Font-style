@@ -1,4 +1,4 @@
-package com.akshay.textstyle.fragments
+package com.akshay.textstyle.fragments.main_activity
 
 import android.app.Activity
 import android.content.Context

@@ -1,6 +1,5 @@
-package com.akshay.textstyle.fragments
+package com.akshay.textstyle.fragments.main_activity
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
@@ -14,51 +13,54 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akshay.textstyle.R
-import com.akshay.textstyle.adapter.DecorationAdapter
+import com.akshay.textstyle.adapter.FontAdapter
 import com.akshay.textstyle.model.Font
 
-
-@Suppress("UNREACHABLE_CODE")
-class DecorationFragment : Fragment() {
-
+class FontFragment : Fragment() {
     private var context: Activity? = null
     private var fontsRV: RecyclerView? = null
-    private val decorationFonts: ArrayList<Font> = ArrayList()
+    private val fontsItems: ArrayList<Font> = ArrayList<Font>()
     private var editText: EditText? = null
 
-    @SuppressLint("UseRequireInsteadOfGet", "NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_decoration, container, false)
+        val view = inflater.inflate(R.layout.fragment_font, container, false)
 
-        if (decorationFonts.isEmpty()) {
-            repeat(99) {
-                decorationFonts.add(Font())
+        if (fontsItems.isEmpty()) {
+            repeat(89) {
+                fontsItems.add(Font())
             }
         } else {
-            decorationFonts.clear()
-            repeat(99) {
-                decorationFonts.add(Font())
+            fontsItems.clear()
+            repeat(89) {
+                fontsItems.add(Font())
             }
         }
-        fontsRV = view.findViewById(R.id.recycle_view_DF)
 
-        val adapter = DecorationAdapter(decorationFonts, context)
-        with(fontsRV){
+        fontsRV = view.findViewById(R.id.recycle_view_FF)
+        val adapter = FontAdapter(fontsItems, requireContext() as Activity)
+        with(fontsRV) {
             this?.layoutManager = LinearLayoutManager(context)
-            this?.adapter = adapter
+            this?.setAdapter(adapter)
         }
-
         editText = activity?.findViewById(R.id.edit_text_main)
-        with(editText){
+        with(editText) {
             this?.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {}
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+                override fun beforeTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    //var editTextStr =text.toString()
+                    //var editTextStr = text.toString()
+
                     updateDecorationFonts(s.toString())
                     adapter.notifyDataSetChanged()
                 }
@@ -69,13 +71,13 @@ class DecorationFragment : Fragment() {
         return view
     }
 
-    private fun updateDecorationFonts(text:String) {
+    private fun updateDecorationFonts(text: String) {
         var editTextStr = text
         if (editTextStr.isEmpty()) {
-            editTextStr= "hey!"
+            editTextStr = "hello"
         }
-        for (item in decorationFonts.indices) {
-            decorationFonts[item].setPreviewText(editTextStr)
+        for (item in fontsItems.indices) {
+            fontsItems[item].setPreviewText(editTextStr)
         }
     }
 

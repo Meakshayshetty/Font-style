@@ -14,12 +14,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.akshay.textstyle.R
 import com.akshay.textstyle.databinding.ActivityMainBinding
-import com.akshay.textstyle.fragments.*
+import com.akshay.textstyle.fragments.main_activity.*
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -38,9 +37,9 @@ class MainActivity : AppCompatActivity() {
         R.drawable.arrow_icon,
         R.drawable.random_icon,
     )
-    private lateinit var tabLayout:TabLayout
-    private lateinit var editText :EditText
-    private lateinit var mainText:TextView
+    private lateinit var tabLayout: TabLayout
+    private lateinit var editText: EditText
+    private lateinit var mainText: TextView
 
     private var mInterstitialAd: InterstitialAd? = null
 
@@ -104,10 +103,10 @@ class MainActivity : AppCompatActivity() {
             })
 
         tabLayout = binding.tabLayout
-        editText =binding.editTextMain
+        editText = binding.editTextMain
         mainText = binding.mainText
         tab()
-        
+
         binding.imageButtonClear.setOnClickListener {
             editText.setText("")
             mainText.text = ""
@@ -149,9 +148,11 @@ class MainActivity : AppCompatActivity() {
         val clip = ClipData.newPlainText("simple text", desStr)
         clipboard.setPrimaryClip(clip)
 
-        Toast.makeText(this,
+        Toast.makeText(
+            this,
             "$desStr Copied to clipboard!",
-            Toast.LENGTH_SHORT).show()
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun tab() {
@@ -201,21 +202,19 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = adapter
     }
 
-    class ViewPagerAdapter(supportFragmentManager: FragmentManager) :
-        FragmentPagerAdapter(supportFragmentManager) {
-        private val mFragmentList = mutableListOf<Fragment>()
-        // private val mFragmentTitleList = mutableListOf<String>()
+class ViewPagerAdapter(fm: androidx.fragment.app.FragmentManager) : FragmentPagerAdapter(fm) {
+    private val mFragmentList = mutableListOf<Fragment>()
 
-        override fun getItem(position: Int): Fragment {
-            return mFragmentList[position]
-        }
-
-        override fun getCount(): Int {
-            return mFragmentList.size
-        }
-
-        fun addFrag(fragment: Fragment) {
-            mFragmentList.add(fragment)
-        }
+    override fun getItem(position: Int): Fragment {
+        return mFragmentList[position]
     }
+
+    override fun getCount(): Int {
+        return mFragmentList.size
+    }
+
+    fun addFrag(fragment: Fragment) {
+        mFragmentList.add(fragment)
+    }
+}
 }

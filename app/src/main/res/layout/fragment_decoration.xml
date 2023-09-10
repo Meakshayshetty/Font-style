@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_vertical"
-    tools:context=".fragments.DecorationFragment">
+    tools:context=".fragments.main_activity.DecorationFragment">
 
 <!--    <EditText
         android:id="@+id/edit_text_DF"

@@ -4135,6 +4135,6 @@ class FontAdapter(private val fontItems: ArrayList<Font>, private val activity: 
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val description: TextView = itemView.findViewById(R.id.descriptionTV)
-        val cardView: CardView = itemView.findViewById(R.id.card_view)
+        val cardView: CardView = itemView.findViewById(R.id.cv_quote)
     }
 }

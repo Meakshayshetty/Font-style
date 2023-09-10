@@ -7,8 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="brown">#979292</color>
+    <color name="brown">#C0BDBD</color>
     <color name="app_base_color">#263238</color>
     <color name="copy_icon_color">#4A65FB</color>
+    <color name="snackbar_background">#AE445A</color>
+    <color name="done_screen_share_button_color">#4477CE</color>
 
 </resources>

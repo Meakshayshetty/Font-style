@@ -6,9 +6,8 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_height="40dp"
-        app:cardCornerRadius="10dp"
+        android:layout_marginBottom="1dp"
+        android:layout_height="50dp"
         app:cardBackgroundColor="@color/app_base_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +21,7 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:gravity="center"
                 android:text="Quick chats"
                 android:textColor="@color/brown"

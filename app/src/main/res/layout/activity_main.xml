@@ -46,7 +46,8 @@
                 android:inputType="text"
                 android:padding="10dp"
                 android:textColor="@color/black"
-                android:textColorHint="@android:color/black"
+                android:hint="enter text"
+                android:textColorHint="@color/brown"
                 android:textSize="18sp"/>
 
             <ImageButton

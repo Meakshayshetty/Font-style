@@ -1,18 +1,17 @@
-package com.akshay.textstyle.fragments
+package com.akshay.textstyle.fragments.main_activity
 
 import android.app.Activity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akshay.textstyle.R
 import com.akshay.textstyle.adapter.StarAdapter
-import com.akshay.textstyle.model.Font
 
 class StarFragment : Fragment() {
 
