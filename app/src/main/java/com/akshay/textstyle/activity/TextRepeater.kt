@@ -1,9 +1,7 @@
 package com.akshay.textstyle.activity
 
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.ContentValues
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -152,7 +150,9 @@ class TextRepeater : AppCompatActivity() {
         binding.repeaterCopy.setOnClickListener{
             showInterstitialAdDelayed()
             val repeaterText = mainText.text.toString()
-            saveToClipboard(repeaterText)
+            val intent = Intent(this, DoneScreen::class.java)
+            intent.putExtra("textDataKey", repeaterText)
+            startActivity(intent)
         }
     }
     private fun showInterstitialAdDelayed() {
@@ -176,16 +176,6 @@ class TextRepeater : AppCompatActivity() {
             }
         }
         Handler().postDelayed(runnable, delayMillis)
-    }
-
-    private fun saveToClipboard(desStr:String){
-        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("simple text", desStr)
-        clipboard.setPrimaryClip(clip)
-
-        Toast.makeText(this,
-            "$desStr Copied to clipboard!",
-            Toast.LENGTH_SHORT).show()
     }
 
     private fun generateText(text:String,times: Int):String{

@@ -1,15 +1,12 @@
 package com.akshay.textstyle.activity
 
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.ContentValues
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akshay.textstyle.R
 import com.akshay.textstyle.databinding.ActivityEncryptAndDecryptBinding
@@ -104,7 +101,9 @@ class EncryptAndDecrypt : AppCompatActivity() {
         binding.btnCopy.setOnClickListener {
             showInterstitialAdDelayed()
             val mainTextString = with(mainText){this?.text.toString()}
-            saveToClipboard(mainTextString)
+            val intent = Intent(this, DoneScreen::class.java)
+            intent.putExtra("textDataKey", mainTextString)
+            startActivity(intent)
         }
     }
 
@@ -143,16 +142,6 @@ class EncryptAndDecrypt : AppCompatActivity() {
         }
         return encrypt
     }
-    private fun saveToClipboard(string:String){
-        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("simple text", string)
-        clipboard.setPrimaryClip(clip)
-
-        Toast.makeText(this,
-            "$string Copied to clipboard!",
-            Toast.LENGTH_SHORT).show()
-    }
-
     private fun decrypt(str :String) :String {
         var decrypt = ""
 

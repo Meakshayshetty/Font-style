@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Text style</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Text Style</string>
 
     <string name="edit_text_value">Enter your text here</string>
+    <string name="encrypt_brief">Encryption is the process by which a readable message is converted
+        to an unreadable form to prevent unauthorized parties from reading it. Decryption is the process of
+        converting an encrypted message back to its original (readable) format.</string>
 
 
     <string name="app_id">ca-app-pub-7765986984540298~8822954060</string>
@@ -14,7 +15,7 @@
     <string name="encrypt_screen_banner_uniid">ca-app-pub-7765986984540298/4717951858</string>
     <string name="encrypt_screen_interstitial_uniid">ca-app-pub-7765986984540298/1912675171</string>
     <string name="text_repeater_interstitial_uniid">ca-app-pub-7765986984540298/4300709957</string>
-
+    <string name="quote_interstitial_uniid">ca-app-pub-7765986984540298/9930980930</string>
     <string name="main_screen_banner">ca-app-pub-7765986984540298/1130910696</string>
 
 

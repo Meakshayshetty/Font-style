@@ -4,11 +4,17 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import com.akshay.textstyle.R
+import com.akshay.textstyle.adapter.CustomDrawerListAdapter
 import com.akshay.textstyle.databinding.ActivityMainScreenBinding
+import com.akshay.textstyle.model.CustomListItem
 import com.akshay.textstyle.model.Quote
 import com.akshay.textstyle.network.ApiClient
 import com.akshay.textstyle.network.QuoteApi
@@ -25,6 +31,11 @@ import java.util.concurrent.TimeUnit
 class MainScreen : AppCompatActivity() {
 
     var binding :ActivityMainScreenBinding? = null
+    private lateinit var drawerLayout: DrawerLayout
+    val drawerItem = listOf(
+        CustomListItem(R.drawable.share_icon, "share"),
+        CustomListItem(R.drawable.ic_heart_red, "saved"),
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +45,42 @@ class MainScreen : AppCompatActivity() {
         MobileAds.initialize(this)
         val request = AdRequest.Builder().build()
         binding!!.adViewMainscreen.loadAd(request)
+        drawerLayout = binding!!.drawerLayout
 
+        val navListView: ListView = binding!!.navListView
+        val drawerAdapter = CustomDrawerListAdapter(this,drawerItem)
+        navListView.adapter = drawerAdapter
 
+        navListView.setOnItemClickListener { _, _, position, _ ->
+            when (position) {
+                0 -> {
+                    // Share item is clicked, handle accordingly
+                    val sharingIntent = Intent(Intent.ACTION_SEND)
+                    sharingIntent.type = "text/plain"
+                    val shareBody = "https://play.google.com/store/apps/details?id=com.akshay.textstyle"
+                    val shareSubject =
+                        "App for fonts, big text, text repetition, and text encrypting and decrypting."
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
+                    startActivity(Intent.createChooser(sharingIntent, "Share using"))
+                    openShareDrawer()
+                }
+                1 -> {
+                    val i = Intent(this@MainScreen, Saved::class.java)
+                    startActivity(i)
+                }
+                // Add more cases for other items
+            }
+            // Close the drawer after handling the click
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
+
+        // Set up the Share button click listener to open the drawer
+        binding!!.btnShare.setOnClickListener {
+            openShareDrawer()
+        }
         scheduleDailyQuoteNotification()
-
         checkAndShowSnackbar()
-
-
 
         binding!!.quotesBtn.setOnClickListener {
             val i = Intent(this@MainScreen, Quotes::class.java)
@@ -71,6 +111,7 @@ class MainScreen : AppCompatActivity() {
             val i = Intent(this@MainScreen, TextRepeater::class.java)
             startActivity(i)
         }
+/*
         binding!!.btnShare.setOnClickListener {
             val sharingIntent = Intent(Intent.ACTION_SEND)
 
@@ -86,6 +127,7 @@ class MainScreen : AppCompatActivity() {
             sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
             startActivity(Intent.createChooser(sharingIntent, "Share using"))
         }
+*/
 
         binding!!.cvQuote.setOnClickListener {
             val textData = "${binding!!.tvQuotes.text}      \n \n ${binding!!.tvAuthor.text}"
@@ -96,21 +138,6 @@ class MainScreen : AppCompatActivity() {
 
         randomQuote()
     }
-
-/*
-    private fun saveToClipboard(desStr: String) {
-        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("simple text", desStr)
-        clipboard.setPrimaryClip(clip)
-
-        Toast.makeText(
-            this,
-            "$desStr Copied to clipboard!",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-*/
-
     private fun scheduleDailyQuoteNotification() {
 
         val uniqueWorkName = "QuoteNotification"
@@ -131,6 +158,7 @@ class MainScreen : AppCompatActivity() {
             )
         }
     }
+
     private fun randomQuote(){
         val apiService = ApiClient.retrofit(Constants.BASE_URL_ZEN_QUOTES).create(QuoteApi::class.java)
         val call = apiService.getRandomQuotes()
@@ -163,6 +191,20 @@ class MainScreen : AppCompatActivity() {
                 binding!!.mainScreenRoot, // Replace with your root layout ID
                 this
             )
+        }
+    }
+
+    private fun openShareDrawer() {
+        // Open the drawer when the Share button is clicked
+        drawerLayout.openDrawer(GravityCompat.START)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
         }
     }
 

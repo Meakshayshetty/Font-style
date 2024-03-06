@@ -1,18 +1,16 @@
 package com.akshay.textstyle.fragments.quote
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akshay.textstyle.R
+import com.akshay.textstyle.activity.DoneScreen
 import com.akshay.textstyle.adapter.GameOfThronesAdapter
 import com.akshay.textstyle.model.GameOfThrones
 import com.akshay.textstyle.network.ApiClient
@@ -53,9 +51,9 @@ class GameOfThrones : Fragment() {
                     if (!quotes.isNullOrEmpty()) {
                         gameOfThronesAdapter = GameOfThronesAdapter(quotes) { selectedString ->
                             // Handle the selected icon
-                            saveToClipboard(selectedString)
-                            Log.e("breaking bad Quotes", quotes.toString())
-                        }
+                            val intent = Intent(context, DoneScreen::class.java)
+                            intent.putExtra("textDataKey", selectedString)
+                            startActivity(intent)                        }
                         rvGameOfThrones?.adapter = gameOfThronesAdapter
 
                         // Use the quoteText and author in your app
@@ -73,17 +71,5 @@ class GameOfThrones : Fragment() {
 
             }
         })
-    }
-
-    private fun saveToClipboard(desStr: String) {
-        val clipboard = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("simple text", desStr)
-        clipboard.setPrimaryClip(clip)
-
-        Toast.makeText(
-            context,
-            "$desStr Copied!",
-            Toast.LENGTH_SHORT
-        ).show()
     }
 }

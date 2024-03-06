@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/app_base_color"
     tools:context=".activity.SplashScreen">
 
 
     <ImageView
-        android:background="@drawable/app_logo"
+        android:background="@drawable/app_logo1"
         android:id="@+id/splashScreen_image"
         android:layout_width="250dp"
         android:layout_height="250dp"

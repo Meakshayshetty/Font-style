@@ -52,11 +52,11 @@
 
             <ImageButton
                 android:id="@+id/imageButton_clear"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@color/white"
                 android:src="@drawable/clear_icon"
-                android:layout_margin="15dp"
+                android:layout_margin="6dp"
                 android:layout_gravity="center|end"/>
 
         </FrameLayout>

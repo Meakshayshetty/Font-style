@@ -23,7 +23,7 @@ class GameOfThronesAdapter(
             quoteCardview.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    val quoteText = quotes[position].sentence
+                    val quoteText = "${quotes[position].sentence} \n\n -${quotes[position].character.name}"
                     onClickListener(quoteText)
                 }
             }

@@ -24,7 +24,7 @@ class QuoteAdapter(
             quoteCardview.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    val quoteText = quotes[position].q
+                    val quoteText = "${quotes[position].q} \n\n -${quotes[position].a}"
                     onClickListener(quoteText)
                 }
             }

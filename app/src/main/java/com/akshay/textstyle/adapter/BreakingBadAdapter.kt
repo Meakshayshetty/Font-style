@@ -23,7 +23,7 @@ class BreakingBadAdapter(
             quoteCardview.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    val quoteText = quotes[position].quote
+                    val quoteText = "${quotes[position].quote} \n\n -${quotes[position].author}"
                     onClickListener(quoteText)
                 }
             }
@@ -39,7 +39,6 @@ class BreakingBadAdapter(
         val quote = quotes[position]
         holder.quoteTextView.text = quote.quote
         holder.authorTextView.text = "- ${quote.author}"
-
     }
 
     override fun getItemCount(): Int {

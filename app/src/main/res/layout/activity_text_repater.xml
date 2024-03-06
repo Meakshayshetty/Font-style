@@ -233,7 +233,7 @@
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="COPY"
+        android:text="DONE"
         android:textColor="@color/black"
         android:background="@color/white"
         android:textSize="25sp"

@@ -1,14 +1,10 @@
 package com.akshay.textstyle.fragments.quote
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,6 +38,7 @@ class ZenQuoteList : Fragment() {
 
         return view
     }
+
     private fun quotes() {
         val apiService = ApiClient.retrofit(Constants.BASE_URL_ZEN_QUOTES).create(QuoteApi::class.java)
         val call = apiService.getQuotes()
@@ -53,7 +50,6 @@ class ZenQuoteList : Fragment() {
                     if (!quotes.isNullOrEmpty()) {
                         quoteAdapter = QuoteAdapter(quotes) { selectedString ->
                             // Handle the selected icon
-                            saveToClipboard(selectedString)
                             val intent = Intent(context, DoneScreen::class.java)
                             intent.putExtra("textDataKey", selectedString)
                             startActivity(intent)
@@ -72,17 +68,4 @@ class ZenQuoteList : Fragment() {
             }
         })
     }
-
-    private fun saveToClipboard(desStr: String) {
-        val clipboard = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("simple text", desStr)
-        clipboard.setPrimaryClip(clip)
-
-        Toast.makeText(
-            context,
-            "$desStr Copied!",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-
 }

@@ -1,6 +1,5 @@
 package com.akshay.textstyle.adapter
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +20,6 @@ class AlphabetAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
         val star = icons?.get(position)
         holder.bind(star)
     }
@@ -33,7 +31,6 @@ class AlphabetAdapter(
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val textView: TextView = itemView.findViewById(R.id.description_text_view_alphabet)
-
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
@@ -50,4 +47,5 @@ class AlphabetAdapter(
             textView.text = icon.toString()
         }
     }
+
 }

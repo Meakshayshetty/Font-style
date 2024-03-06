@@ -346,23 +346,9 @@ class EmoticonFragment : Fragment() {
                 mainText?.append(desStr)
                 editText?.append(desStr)
 
-
-
-                /*activity?.findViewById<ImageButton>(R.id.mainBtn)?.setOnClickListener {
-                    Toast.makeText(context,
-                        "Copied to clipboard! Your copied text is $desStr",
-                        Toast.LENGTH_SHORT).show()
-                    saveToClipboard(desStr)
-                }*/
             }
         return view
     }
-  /*  fun saveToClipboard(desStr:String){
-        val clipboard =
-            activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("simple text", desStr)
-        clipboard.setPrimaryClip(clip)
-    }*/
 
     override fun onAttach(context: Context) {
         super.onAttach(requireContext())

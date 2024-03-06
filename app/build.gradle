@@ -10,13 +10,14 @@ android {
         applicationId "com.akshay.textstyle"
         minSdk 21
         targetSdk 33
-        versionCode 6
-        versionName "6.0"
+        versionCode 13
+        versionName "13.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            shrinkResources false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

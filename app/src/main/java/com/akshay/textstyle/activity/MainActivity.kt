@@ -2,16 +2,13 @@
 
 package com.akshay.textstyle.activity
 
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.ContentValues
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
@@ -115,7 +112,9 @@ class MainActivity : AppCompatActivity() {
         binding.mainBtn.setOnClickListener {
             showInterstitialAdDelayed()
             val copyText = binding.mainText.text.toString()
-            saveToClipboard(copyText)
+            val intent = Intent(this, DoneScreen::class.java)
+            intent.putExtra("textDataKey", copyText)
+            startActivity(intent)
         }
     }
 
@@ -143,17 +142,6 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed(runnable, delayMillis)
     }
 
-    private fun saveToClipboard(desStr: String) {
-        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("simple text", desStr)
-        clipboard.setPrimaryClip(clip)
-
-        Toast.makeText(
-            this,
-            "$desStr Copied to clipboard!",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
 
     private fun tab() {
         val viewPager: ViewPager = findViewById(R.id.viewPager)

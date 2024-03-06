@@ -1,13 +1,10 @@
 package com.akshay.textstyle.activity
 
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.ContentValues
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akshay.textstyle.R
 import com.akshay.textstyle.databinding.ActivityBigtextBinding
@@ -338,8 +335,10 @@ class BigtextActivity : AppCompatActivity() {
 
 
         binding.bigCopy.setOnClickListener {
-            saveToClipboard(mainText.text.toString())
             showInterstitialAdDelayed()
+            val intent = Intent(this, DoneScreen::class.java)
+            intent.putExtra("textDataKey", mainText.text.toString())
+            startActivity(intent)
         }
 
         binding.resetBtnBig.setOnClickListener {
@@ -369,17 +368,6 @@ class BigtextActivity : AppCompatActivity() {
         }
         Handler().postDelayed(runnable, delayMillis)
     }
-
-    private fun saveToClipboard(desStr: String) {
-        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("simple text", desStr)
-        clipboard.setPrimaryClip(clip)
-
-        Toast.makeText(this,
-            "$desStr Copied to clipboard!",
-            Toast.LENGTH_SHORT).show()
-    }
-
     fun getBigAlphabet(char: Char): List<String> {
         return characters[char] ?: emptyList()
     }

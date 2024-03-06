@@ -12,7 +12,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.akshay.textstyle.R
-import com.akshay.textstyle.activity.Quotes
+import com.akshay.textstyle.activity.MainScreen
 import com.akshay.textstyle.model.Quote
 import com.akshay.textstyle.network.ApiClient
 import com.akshay.textstyle.network.QuoteApi
@@ -65,7 +65,7 @@ class QuoteNotificationWorker(private val context: Context, params: WorkerParame
         }
     }
 
-    @SuppressLint("UnspecifiedImmutableFlag")
+    @SuppressLint("UnspecifiedImmutableFlag", "InlinedApi")
     private fun createNotification(quote: String, author: String) {
         val notificationManager = NotificationManagerCompat.from(context)
 
@@ -78,15 +78,19 @@ class QuoteNotificationWorker(private val context: Context, params: WorkerParame
             notificationManager.createNotificationChannel(channel)
         }
 
-        val intent = Intent(context, Quotes::class.java)
-        val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+        val intent = Intent(
+            context,
+            MainScreen::class.java
+        )
+        val pendingIntent = PendingIntent.getActivity(context, 0, intent,
+            PendingIntent.FLAG_IMMUTABLE)
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setContentTitle("Daily Quote")
             .setContentText("\"$quote\" - $author")
 
             //TODO: notification icon
-            .setSmallIcon(R.drawable.app_logo)
+            .setSmallIcon(R.drawable.app_logo1)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)  // Set the intent here
             .setStyle(NotificationCompat.BigTextStyle().bigText("\"$quote\" - $author"))

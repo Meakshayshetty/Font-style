@@ -1,5 +1,6 @@
 package com.akshay.textstyle.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,17 @@ class QuickChatAdapter (
 
         val quickChats = quickChats?.get(position)
         holder.bind(quickChats)
+
+        holder.shareImage.setOnClickListener {
+            val sharingIntent = Intent(Intent.ACTION_SEND)
+
+            sharingIntent.type = "text/plain"
+
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, quickChats)
+
+            //sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
+            holder.itemView.context.startActivity(Intent.createChooser(sharingIntent, "Share using"))
+        }
     }
 
     override fun getItemCount(): Int {
@@ -33,6 +45,7 @@ class QuickChatAdapter (
 
         val textView: TextView = itemView.findViewById(R.id.textView)
         val copyImage:ImageView = itemView.findViewById(R.id.imageView_copy)
+        val shareImage:ImageView = itemView.findViewById(R.id.imageView_share)
 
         init {
             copyImage.setOnClickListener {
@@ -44,6 +57,7 @@ class QuickChatAdapter (
                     }
                 }
             }
+
         }
 
         fun bind(quickChats: String?) {
