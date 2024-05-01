@@ -19,6 +19,7 @@
     <string name="main_screen_banner">ca-app-pub-7765986984540298/1130910696</string>
     <string name="saved">Saved</string>
     <string name="quick_styles">Quick styles</string>
+    <string name="no_saved_data">no saved data</string>
 
 
 </resources>

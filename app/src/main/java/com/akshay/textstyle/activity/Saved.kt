@@ -3,6 +3,8 @@ package com.akshay.textstyle.activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +16,7 @@ import com.google.gson.reflect.TypeToken
 
 class Saved : AppCompatActivity() ,DeleteCallback{
     private var recyclerview:RecyclerView?=null
+    private lateinit var noSaved:TextView
     private var savedText:ArrayList<String> = arrayListOf()
     private var arraySaved:ArrayList<String> = arrayListOf()
     private lateinit var adapter :SavedAdapter
@@ -21,9 +24,16 @@ class Saved : AppCompatActivity() ,DeleteCallback{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_saved)
         recyclerview = findViewById(R.id.rv_saved)
+        noSaved = findViewById(R.id.tvNoSaved)
         savedText = getSavedList()
-        adapter = SavedAdapter(savedText,this)
-        recyclerview?.adapter = adapter
+        if (savedText.isNotEmpty()){
+            noSaved.visibility =View.GONE
+            adapter = SavedAdapter(savedText,this)
+            recyclerview?.adapter = adapter
+        }else{
+            noSaved.visibility =View.VISIBLE
+        }
+
         Log.e("SAVEDTEXTDATA",savedText.toString())
     }
     private fun getSavedList():ArrayList<String>{
@@ -52,5 +62,11 @@ class Saved : AppCompatActivity() ,DeleteCallback{
         setSaveLists(arraySaved)
         adapter.updateData(arraySaved)
         adapter.notifyDataSetChanged()
+        if (arraySaved.isNotEmpty()){
+            noSaved.visibility =View.GONE
+        }else{
+            noSaved.visibility =View.VISIBLE
+        }
+
     }
 }

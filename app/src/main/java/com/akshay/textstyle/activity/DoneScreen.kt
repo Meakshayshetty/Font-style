@@ -32,7 +32,7 @@ class DoneScreen : AppCompatActivity() {
         heartIcon = binding.heartIcon
         generatedText = binding.tvDone
 
-        sharedPreferences = getSharedPreferences("SavedTexts", Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("YourSharedPreferencesName", Context.MODE_PRIVATE)
 
         val receivedText = intent.getStringExtra("textDataKey")
 
@@ -63,9 +63,11 @@ class DoneScreen : AppCompatActivity() {
             }
         }
         if (isGeneratedTextSaved()) {
+            Log.e("SAVEDARRAYTEXT222222", "red")
             // There is saved text, so set the heart icon as red
             heartIcon!!.setImageResource(R.drawable.ic_heart_red)
         } else {
+            Log.e("SAVEDARRAYTEXT222222", "not red")
             // No saved text, so set the heart icon as uncolored
             heartIcon!!.setImageResource(R.drawable.ic_heart_uncolored)
         }
@@ -106,6 +108,7 @@ class DoneScreen : AppCompatActivity() {
 
     private fun toggleHeartIconState() {
         if (isRed) {
+
             // If the heart is red, turn it uncolored and remove saved text
             heartIcon?.setImageResource(R.drawable.ic_heart_uncolored)
             isRed = false
@@ -118,6 +121,7 @@ class DoneScreen : AppCompatActivity() {
                 Log.e("SAVEDARRAYTEXT111111", getSavedList().toString())
             }
         } else {
+
             // If the heart is uncolored, turn it red and save text
             heartIcon?.setImageResource(R.drawable.ic_heart_red)
             isRed = true
@@ -150,7 +154,9 @@ class DoneScreen : AppCompatActivity() {
     private fun isGeneratedTextSaved(): Boolean {
         // Check if the generatedText is already saved in SharedPreferences
         val textToSave = generatedText?.text.toString()
-        val savedText = sharedPreferences.getString("savedTextKey", "")
-        return savedText == textToSave
+        Log.e("SAVEDARRAYTEXT222222", "${sharedPreferences.getString("LIST", "")}")
+
+        val savedText = sharedPreferences.getString("LIST", "")
+        return savedText!!.contains(textToSave)
     }
 }
