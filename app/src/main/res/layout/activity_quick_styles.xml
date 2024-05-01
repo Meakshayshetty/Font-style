@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".activity.QuickStyles">
+
+    <TextView
+        android:elevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/quick_styles"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textStyle="bold|normal"
+        android:background="@color/copy_icon_color"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_quick_chat"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/adapter_quickchat"/>
 
 </LinearLayout>

@@ -1,19 +1,28 @@
 package com.akshay.textstyle.activity
 
-import android.content.*
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akshay.textstyle.R
 import com.akshay.textstyle.databinding.ActivityDoneScreenBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class DoneScreen : AppCompatActivity() {
 
     private var heartIcon: ImageView? = null
     private var generatedText:TextView? = null
     private lateinit var sharedPreferences: SharedPreferences
+    private var savedArray :ArrayList<String>?=ArrayList()
+    private var isRed :Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +33,6 @@ class DoneScreen : AppCompatActivity() {
         generatedText = binding.tvDone
 
         sharedPreferences = getSharedPreferences("SavedTexts", Context.MODE_PRIVATE)
-
 
         val receivedText = intent.getStringExtra("textDataKey")
 
@@ -48,7 +56,11 @@ class DoneScreen : AppCompatActivity() {
         }
 
         heartIcon!!.setOnClickListener {
-            toggleHeartIconState()
+            if (generatedText?.text?.trim().toString().isNotEmpty()){
+                toggleHeartIconState()
+            }else{
+                Toast.makeText(this,"text is empty",Toast.LENGTH_SHORT).show()
+            }
         }
         if (isGeneratedTextSaved()) {
             // There is saved text, so set the heart icon as red
@@ -57,6 +69,26 @@ class DoneScreen : AppCompatActivity() {
             // No saved text, so set the heart icon as uncolored
             heartIcon!!.setImageResource(R.drawable.ic_heart_uncolored)
         }
+    }
+
+    fun setSaveLists(list:ArrayList<String>){
+        val sharedPreferences = getSharedPreferences("YourSharedPreferencesName", Context.MODE_PRIVATE)
+        var editor = sharedPreferences.edit()
+        val gson = Gson()
+        val json = gson.toJson(list)//converting list to Json
+        editor.putString("LIST",json)
+        editor.commit()
+    }
+
+    private fun getSavedList():ArrayList<String>{
+        val gson = Gson()
+        val sharedPreferences = getSharedPreferences("YourSharedPreferencesName", Context.MODE_PRIVATE)
+        val json = sharedPreferences.getString("LIST",null)
+        if(json != null){
+            val type = object : TypeToken<ArrayList<String>>(){}.type//converting the json to list
+            return gson.fromJson(json,type)//returning the list
+        }
+        return ArrayList()
     }
 
     private fun saveToClipboard(desStr: String) {
@@ -73,24 +105,33 @@ class DoneScreen : AppCompatActivity() {
 
 
     private fun toggleHeartIconState() {
-        if (isHeartRed()) {
+        if (isRed) {
             // If the heart is red, turn it uncolored and remove saved text
             heartIcon?.setImageResource(R.drawable.ic_heart_uncolored)
-            removeSavedText()
+            isRed = false
+            //removeSavedText()
+            val textToSave = generatedText?.text.toString()
+            savedArray = getSavedList()
+            if(savedArray!!.isNotEmpty() ||savedArray!!.contains(textToSave)){
+                savedArray?.remove(textToSave)
+                setSaveLists(savedArray!!)
+                Log.e("SAVEDARRAYTEXT111111", getSavedList().toString())
+            }
         } else {
             // If the heart is uncolored, turn it red and save text
             heartIcon?.setImageResource(R.drawable.ic_heart_red)
-            saveTextToSharedPreferences()
-        }
+            isRed = true
+           // saveTextToSharedPreferences()
+            val textToSave = generatedText?.text.toString()
+                savedArray=getSavedList()
+                savedArray?.add(textToSave)
+                setSaveLists(savedArray!!)
+
+                Log.e("SAVEDARRAYTEXT222222", getSavedList().toString())
+            }
     }
 
-    private fun isHeartRed(): Boolean {
-        // Check if the heart icon is currently displaying the red icon
-        return heartIcon?.drawable?.constantState ==
-                resources.getDrawable(R.drawable.ic_heart_red).constantState
-    }
-
-    private fun saveTextToSharedPreferences() {
+/*    private fun saveTextToSharedPreferences() {
         val textToSave = generatedText?.text.toString() // Replace with your text
         val editor = sharedPreferences.edit()
         editor.putString("savedTextKey", textToSave)
@@ -104,7 +145,7 @@ class DoneScreen : AppCompatActivity() {
         editor.apply()
         Toast.makeText(this,"removed",Toast.LENGTH_SHORT).show()
 
-    }
+    }*/
 
     private fun isGeneratedTextSaved(): Boolean {
         // Check if the generatedText is already saved in SharedPreferences
