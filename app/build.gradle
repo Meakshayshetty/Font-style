@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.akshay.textstyle"
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 13
         versionName "13.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -32,6 +32,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    namespace 'com.akshay.textstyle'
 }
 
 dependencies {
