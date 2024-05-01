@@ -12,5 +12,7 @@
     <color name="copy_icon_color">#4A65FB</color>
     <color name="snackbar_background">#AE445A</color>
     <color name="done_screen_share_button_color">#4477CE</color>
+    <color name="brown2">#989696</color>
+
 
 </resources>

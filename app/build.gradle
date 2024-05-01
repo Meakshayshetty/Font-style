@@ -10,8 +10,8 @@ android {
         applicationId "com.akshay.textstyle"
         minSdk 21
         targetSdk 33
-        versionCode 13
-        versionName "13.0"
+        versionCode 14
+        versionName "14.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -32,6 +32,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    namespace 'com.akshay.textstyle'
 }
 
 dependencies {

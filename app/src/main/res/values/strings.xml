@@ -17,6 +17,8 @@
     <string name="text_repeater_interstitial_uniid">ca-app-pub-7765986984540298/4300709957</string>
     <string name="quote_interstitial_uniid">ca-app-pub-7765986984540298/9930980930</string>
     <string name="main_screen_banner">ca-app-pub-7765986984540298/1130910696</string>
+    <string name="saved">Saved</string>
+    <string name="quick_styles">Quick styles</string>
 
 
 </resources>
