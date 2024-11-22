@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "498341744494",
+    "project_id": "text-style-4512d",
+    "storage_bucket": "text-style-4512d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498341744494:android:d200248656d37f4ac43b7f",
+        "android_client_info": {
+          "package_name": "com.akshay.textstyle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCJDKR1saIl4Roj6W3KL2ntSi-o4SHjgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
